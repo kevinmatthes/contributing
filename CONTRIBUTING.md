@@ -254,6 +254,24 @@ cleaning once the header is left.
 
 
 
+### Numerals
+
+C allows it to annotate numerals in order to clarify their intended range and
+precision.  This shall be processed for this project, as well.
+
+Any annotation, if possible, shall be made using *upper case* letters.  The same
+holds for string formatting place holders.
+
+Integers of type `int` oder `unsigned int` shall be annotated using their
+hexadecimal notation.
+
+```
+long long int   ll  = 0LL;
+unsigned int    u   = 0x0;
+```
+
+
+
 ### Return statements
 
 Any function must contain exactly **one** `return` statement.  This also
@@ -367,6 +385,12 @@ After the `typedef` token, the next tab stop needs to be reached.  The same
 holds for types in general, except in cases where exceptions of the tab stop
 rule allow to use a single space character, such as in parameter lists, for
 instance.
+
+For some types, such as `unsigned` or `long` ones, it is not required to also
+state the `int` type additionally.  Anyway, the `int` type declaration shall
+**always** be stated if a number is an integer.
+
+If available, `typedef` types shall be used instead of their definitions.
 
 
 
