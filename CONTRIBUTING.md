@@ -77,6 +77,10 @@ where the used standard and, hence, the compiler denies it.  This ensures that
 after a `typedef` of structs, for example, the mandatory semicolon will never be
 forgotten.
 
+In case that a block of code should contain only a single instruction, the
+brackets of the concerning block  **must not** be set.  Instead, the concerning
+instruction shall be placed **in the next line**, indented by a further level.
+
 
 
 ### Compiler and options
@@ -186,6 +190,21 @@ type_t  foo_    (type_t parameter)
     return ret_;
 }
 ```
+
+
+
+### Instructions
+
+Although the language C allows it, instructions **must not** be united using the
+comma operator (`,`) since this might cause confusion regarding the question
+which block a certain instruction belongs to.  Instead, all instructions shall
+only contain one statement.
+
+This rule also holds for declaration lists.  Declarations **must not** be
+summarised using commas.
+
+The sole exception to this rule are `for` loops where the comma is allowed to be
+used in order to increment multiple variables.
 
 
 
