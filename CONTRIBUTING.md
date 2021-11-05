@@ -25,7 +25,7 @@
 
 <!----------------------------------------------------------------------------->
 
-# Contributing to this project
+# Contributing to This Project
 
 When contributing to this project, several conventions should be honoured in
 order keep the overall appearance of this repository uniform.  These conventions
@@ -83,7 +83,7 @@ instruction shall be placed **in the next line**, indented by a further level.
 
 
 
-### Compiler and options
+### Compiler and Options
 
 The default C compiler for this project is **`gcc`**.  It has to be called with
 *at least* the following flags and options:
@@ -96,7 +96,7 @@ The default C compiler for this project is **`gcc`**.  It has to be called with
 
 
 
-### Declaration lists and `const`
+### Declaration Lists and `const`
 
 In some situations, multiple symbols need to be declared.  For instance, at the
 beginning of a function where auxillary variables for the calculation are
@@ -220,7 +220,7 @@ one.
 
 
 
-### Loop-breaking commands and `goto` statements
+### Loop-breaking Commands and `goto` Statements
 
 The design of a function shall exclude the necessity of any statements like
 
@@ -237,7 +237,7 @@ key words.
 
 
 
-### Name mangling
+### Name Mangling
 
 If the exported symbols share common prefixes, they must be mangled using the
 preprocessor macro `NAME(identifier)`.  This macro has to be removed at the end
@@ -272,7 +272,7 @@ unsigned int    u   = 0x0;
 
 
 
-### Pointer types
+### Pointer Types
 
 The pointer declaration requires at least one `*` to be noted in between the
 type name and the identifier.  Thereby, the `*` **must not** be enclosing the
@@ -296,7 +296,7 @@ void *  foo = bar -> foo_;
 
 
 
-### Return statements
+### Return Statements
 
 Any function must contain exactly **one** `return` statement.  This also
 includes `void` functions.
@@ -423,7 +423,7 @@ the following options for the compiler `gcc`:
 
 
 
-### Typedefs and types
+### Typedefs and Types
 
 `typedef` statements have to be made in header files only.  Furthermore, they
 need to bring a security feature with them such that, in case the type was
@@ -451,7 +451,7 @@ If available, `typedef` types shall be used instead of their definitions.
 
 
 
-### `void` parameter lists
+### `void` Parameter Lists
 
 In case that functions do not need to receive any data as parameters, their
 parameter list **must** be filled with `void` instead.
