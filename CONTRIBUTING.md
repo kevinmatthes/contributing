@@ -276,8 +276,8 @@ unsigned int    u   = 0x0;
 
 The pointer declaration requires at least one `*` to be noted in between the
 type name and the identifier.  Thereby, the `*` **must not** be enclosing the
-identifier of another symbol but shall be separated by at least one space
-character from it.
+identifier or any other symbol but shall be separated by at least one space
+character from them.
 
 Multiple `*` shall be grouped without any spaces between them.
 
