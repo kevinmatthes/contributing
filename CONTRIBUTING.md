@@ -391,6 +391,21 @@ void    foo_    (void)
 The rule for function declaration does also hold for preprocessor macro
 definition except the spacing between indentifier and parenthesis.
 
+In case that a function should contain only few lines of code and all of them
+are regular instructions, there **must not** be any blank lines in order to
+separate the blocks from each other.  Furthermore, such functions should rather
+be tagged `inline`.  The goal should be to make as much functions as possible
+candidates for being tagged `inline`.
+
+```
+inline  int foo (void)
+{
+    int bar = 0x0;
+    for (; bar < 0x2A; bar++);
+    return bar;
+}
+```
+
 
 
 ### Standard
