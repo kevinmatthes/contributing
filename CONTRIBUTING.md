@@ -272,6 +272,30 @@ unsigned int    u   = 0x0;
 
 
 
+### Pointer types
+
+The pointer declaration requires at least one `*` to be noted in between the
+type name and the identifier.  Thereby, the `*` **must not** be enclosing the
+identifier of another symbol but shall be separated by at least one space
+character from it.
+
+Multiple `*` shall be grouped without any spaces between them.
+
+```
+int *   foo = (void *) 0x0;
+char ** bar = (void *) 0x0;
+```
+
+Pointers to structs enable the usage of the `->` operator.  When using it, it
+shall be separated with **exactly** one space character from neighbouring
+tokens.
+
+```
+void *  foo = bar -> foo_;
+```
+
+
+
 ### Return statements
 
 Any function must contain exactly **one** `return` statement.  This also
@@ -299,6 +323,24 @@ When ending a block, **no** blank lines must be noted at the end of it.
 Control flow elements, such as `if`, `for`, `switch` and so on shall be
 separated a single blank line from the previous sequence of code.  This holds
 especially for the cases that they not only contain a single line of code each.
+
+In case that especially `for` loops, for example, do not contain any instruction
+but are intructions themselves, they shall be treated like any other regular
+instructions.
+
+```
+foo = 0x1;
+bar = 0x2;
+
+for (int i = 0x0; i < bar; i++)
+    foo++;
+
+foo = 0x0;
+bar = 0x3;
+for (int i = 0x0; i < 0x3; i++);
+foo = 0x1;
+bar = 0x2;
+```
 
 Except those rules where according exceptions are defined, symbols should be
 aligned using tab stops as defined above in order to achieve a table-like
