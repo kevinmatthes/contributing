@@ -455,3 +455,5 @@ If available, `typedef` types shall be used instead of their definitions.
 
 In case that functions do not need to receive any data as parameters, their
 parameter list **must** be filled with `void` instead.
+
+<!----------------------------------------------------------------------------->
