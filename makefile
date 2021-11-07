@@ -35,12 +35,13 @@
 #
 ##
 
-CODEBLOCK		:= ./.docs/codeblock.md
 CONTRIBUTING	:= ./CONTRIBUTING.md
 COPY			:= cp
 DIRS			:= ../.docs/
 LICENSE			:= ./LICENSE
 LISTER			:= cat
+LSTART			:= ./.docs/license_begin.md
+LSTOP			:= ./.docs/license_end.md
 NEWDIR			:= mkdir
 NEWPAGE			:= ./.docs/newpage.md
 PANDOC			:= pandoc
@@ -71,7 +72,7 @@ $(PDF): $(CODEBLOCK) $(CONTRIBUTING) $(LICENSE) $(NEWPAGE) $(README) $(YAML)
 	$(LISTER)	$(YAML)									$(NEWPAGE) \
 				$(README)								$(NEWPAGE) \
 				$(CONTRIBUTING)							$(NEWPAGE) \
-				$(CODEBLOCK) $(LICENSE) $(CODEBLOCK)	\
+				$(LSTART) $(LICENSE) $(LSTOP)			\
 	| $(PANDOC) $(PFLAGS) -o $@
 
 .PHONY: submodule
