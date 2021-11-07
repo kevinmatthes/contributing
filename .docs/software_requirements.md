@@ -31,8 +31,8 @@ This project requires several further applications and libraries in order to be
 built and installed as intended.  These requirements will be listed and
 explained in the following.
 
-In case that there should be variable of the build routine which requires the
-concerning application, it will be named in parenthesis behind the software's
+In case that there should be a variable of the build routine which requires the
+concerning application, it will be named in parentheses behind the software's
 name.  This enables users who would like to alter the application to easily
 adjust the corresponding variable accordingly.
 
@@ -61,7 +61,7 @@ It can be altered as desired.
 
 The default UNIX utility in order to create new directories ensures mandatory
 directories of the super project to exist since they will be the default export
-target for some files.
+targets for some files.
 
 It can be altered as desired.
 
