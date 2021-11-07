@@ -69,12 +69,13 @@ $(DIRS):
 license: $(LICENSE)
 	$(COPY) $^ ../
 
-$(PDF): $(CODEBLOCK) $(CONTRIBUTING) $(LICENSE) $(NEWPAGE) $(README) $(SOFTWARE) $(YAML)
-	$(LISTER)	$(YAML)									$(NEWPAGE) \
-				$(README)								$(NEWPAGE) \
-				$(SOFTWARE)								$(NEWPAGE) \
-				$(CONTRIBUTING)							$(NEWPAGE) \
-				$(LSTART) $(LICENSE) $(LSTOP)			\
+$(PDF):	$(CODEBLOCK) $(CONTRIBUTING) $(LICENSE) $(NEWPAGE) $(README) \
+		$(SOFTWARE) $(YAML)
+	$(LISTER)	$(YAML)							$(NEWPAGE) \
+				$(README)						$(NEWPAGE) \
+				$(SOFTWARE)						$(NEWPAGE) \
+				$(CONTRIBUTING)					$(NEWPAGE) \
+				$(LSTART) $(LICENSE) $(LSTOP)	\
 	| $(PANDOC) $(PFLAGS) -o $@
 
 .PHONY: submodule
