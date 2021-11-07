@@ -49,6 +49,7 @@ PDF				:= ./contributing.pdf
 PFLAGS			:= -N
 README			:= ./README.md
 SOFTWARE		:= ./.docs/software_requirements.md
+SUPER_SOFTWARE	:= ../.docs/software_requirements.md
 YAML			:= $(wildcard ./.docs/*.yaml)
 
 
@@ -79,6 +80,10 @@ $(PDF):	$(CONTRIBUTING) $(LICENSE) $(LSTART) $(LSTOP) $(NEWPAGE) $(README)	\
 	| $(PANDOC) $(PFLAGS) -o $@
 
 .PHONY: submodule
-submodule: $(DIRS)
-	$(COPY) $(wildcard ./.docs/*.md) ./.docs/meta.yaml ../.docs/
+submodule:	$(CONTRIBUTING) $(DIRS) $(LSTART) $(LSTOP) $(NEWPAGE)	\
+			$(SUPER_SOFTWARE) $(YAML)
+	$(COPY)	$(LSTART) $(LSTOP) $(NEWPAGE) ./.docs/meta.yaml ../.docs/
 	$(COPY) $(CONTRIBUTING) ../
+
+$(SUPER_SOFTWARE): $(DIRS) $(SOFTWARE)
+	$(COPY) $(SOFTWARE) ../.docs/

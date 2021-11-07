@@ -124,4 +124,14 @@ make
 make submodule
 ```
 
+
+
+### `../.docs/software_requirements.md`
+
+Copy the basic software requirements of this project to the super project.  In
+case the super project should have already defined own requirements, this
+internal instruction ensures that those will not be overwritten.
+
+This is just an internal build instruction.
+
 <!----------------------------------------------------------------------------->
