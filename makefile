@@ -42,6 +42,7 @@ LICENSE			:= ./LICENSE
 LISTER			:= cat
 LSTART			:= ./.docs/license_begin.md
 LSTOP			:= ./.docs/license_end.md
+META_CONST		:= ./.docs/meta.yaml
 NEWDIR			:= mkdir
 NEWPAGE			:= ./.docs/newpage.md
 PANDOC			:= pandoc
@@ -80,9 +81,9 @@ $(PDF):	$(CONTRIBUTING) $(LICENSE) $(LSTART) $(LSTOP) $(NEWPAGE) $(README)	\
 	| $(PANDOC) $(PFLAGS) -o $@
 
 .PHONY: submodule
-submodule:	$(CONTRIBUTING) $(DIRS) $(LSTART) $(LSTOP) $(NEWPAGE)	\
-			$(SUPER_SOFTWARE) $(YAML)
-	$(COPY)	$(LSTART) $(LSTOP) $(NEWPAGE) ./.docs/meta.yaml ../.docs/
+submodule:	$(CONTRIBUTING) $(DIRS) $(LSTART) $(LSTOP) $(META_CONST)	\
+			$(NEWPAGE) $(SUPER_SOFTWARE)
+	$(COPY)	$(LSTART) $(LSTOP) $(META_CONST) $(NEWPAGE) ../.docs/
 	$(COPY) $(CONTRIBUTING) ../
 
 $(SUPER_SOFTWARE): $(DIRS) $(SOFTWARE)
