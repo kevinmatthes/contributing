@@ -48,6 +48,7 @@ PANDOC			:= pandoc
 PDF				:= ./contributing.pdf
 PFLAGS			:= -N
 README			:= ./README.md
+SOFTWARE		:= ./.docs/software_requirements.md
 YAML			:= $(wildcard ./.docs/*.yaml)
 
 
@@ -68,9 +69,10 @@ $(DIRS):
 license: $(LICENSE)
 	$(COPY) $^ ../
 
-$(PDF): $(CODEBLOCK) $(CONTRIBUTING) $(LICENSE) $(NEWPAGE) $(README) $(YAML)
+$(PDF): $(CODEBLOCK) $(CONTRIBUTING) $(LICENSE) $(NEWPAGE) $(README) $(SOFTWARE) $(YAML)
 	$(LISTER)	$(YAML)									$(NEWPAGE) \
 				$(README)								$(NEWPAGE) \
+				$(SOFTWARE)								$(NEWPAGE) \
 				$(CONTRIBUTING)							$(NEWPAGE) \
 				$(LSTART) $(LICENSE) $(LSTOP)			\
 	| $(PANDOC) $(PFLAGS) -o $@
