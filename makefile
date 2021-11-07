@@ -69,7 +69,7 @@ $(DIRS):
 license: $(LICENSE)
 	$(COPY) $^ ../
 
-$(PDF):	$(CODEBLOCK) $(CONTRIBUTING) $(LICENSE) $(NEWPAGE) $(README) \
+$(PDF):	$(CONTRIBUTING) $(LICENSE) $(LSTART) $(LSTOP) $(NEWPAGE) $(README)	\
 		$(SOFTWARE) $(YAML)
 	$(LISTER)	$(YAML)							$(NEWPAGE) \
 				$(README)						$(NEWPAGE) \
