@@ -57,4 +57,73 @@ version of the license is as follows:
 > with this program; if not, write to the Free Software Foundation, Inc.,
 > 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
+When compiling a printable version of this documentation using `pandoc`, the
+full license will be attached automatically to the resulting document.
+
+
+
+## Build Instructions
+
+This project offers the following build instructions in order create (parts) of
+the provided utility:
+
+
+
+### `default`
+
+Process the default build instruction.  At the moment, this will copy the
+contribution guidelines as well as some further utility files to the super
+project which binds this one as a submodule.
+
+This task is intended to be executed by calling:
+
+```
+make
+```
+
+
+
+### `$(DIRS)`
+
+Create new directories in the super project in case they should not already
+exist.  This rule ensures copy instructions to succeed.
+
+This is just an internal build instruction.
+
+
+
+### `license`
+
+Copy this project's license to the super project in order to license it GPL 2
+(as of June 1991), as well.
+
+```
+make license
+```
+
+
+
+### `contributing.pdf`
+
+Create a printable version of this documentation.
+
+```
+make contributing.pdf
+```
+
+
+
+### `submodule`
+
+Copy the contribution guidelines as well as some utility files from the
+`./.docs/` directory to the super project.
+
+```
+make
+# or
+make submodule
+```
+
+
+
 <!----------------------------------------------------------------------------->
