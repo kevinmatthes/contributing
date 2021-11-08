@@ -549,7 +549,7 @@ shall to be introduced and finished by `---` at the beginning of the document.
 See `pandoc`'s documentation for possible values.
 
 Since the Markdown documents are rendered by GitHub, as well, it is recommended
-to separate the meta data from the actual content by saving them in a separate
+to separate the meta data from the actual content by saving it in a separate
 file.  The file extension therefore shall be `*.yaml` although there are further
 equivalent extensions for YAML.  Since most of the settings can be considered
 constant for multiple files, constants should be outsourced into a further file
