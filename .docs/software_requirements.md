@@ -75,4 +75,17 @@ version of this project's documentation.
 Altering this application could be difficult since the compilation routine of
 the documentation is designed for `pandoc`.
 
+
+
+## `texlive-full`
+
+`pandoc` requires a \LaTeX environment in order to compile the printable version
+of this documentation.  The recommended \LaTeX environment is `texlive-full`
+which can be installed by passing this as package name to the compiling system's
+package manager.  Any other \LaTeX distribution is possible, as well, but not
+tested.
+
+It can be altered as desired.  Altering this software is not recommended,
+anyway.
+
 <!----------------------------------------------------------------------------->
