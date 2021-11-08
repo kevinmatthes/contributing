@@ -160,7 +160,7 @@ be exported, as well, in a future version of the project.
 ### Indentation
 
 Indentation is processed by **four spaces** per level.  In case some situations
-should require real tab characters, i. e. `\t`, the tab character shall be
+should require real tab characters, this is `\t`, the tab character shall be
 assumed to evaluate as a sequence of four spaces.
 
 After type names, the next lexeme must start at the next tab stop.  Hence, after
@@ -359,8 +359,8 @@ alignment of their neighbouring blocks / sequences.
 Operators have to be separated by at least one space character from their
 operands.  This also holds for negation (`!`).  In case that sequences of code
 should include not only ordinary assignments (`=`) but also shortcut assignments
-(e. g. `+=`), they are aligned such that the first column of the operator with
-the most characters for representation which will be reached after a single
+(for example `+=`), they are aligned such that the first column of the operator
+with the most characters for representation which will be reached after a single
 space character is considered the reference for the whole block / sequence:
 
 ```
@@ -479,8 +479,8 @@ example, when compiled with `pandoc`, Markdown files will be converted into TeX
 files, at first.  Hence, comments which belong to the text are introduced using
 `%` characters at the beginning of the comment.
 
-If a comment belongs to the Markdown file, such as license information or file
-purpose, they shall be marked as such using the Markdown syntax.
+If a comment belongs to the Markdown file, such as license information or the
+file's purpose, they shall be marked as such using the Markdown syntax.
 
 Comments for meta data blocks must always follow the conventions of the
 according language.  This is, if YAML is used, comments need to be introduced
@@ -495,7 +495,7 @@ concerns sections of different level but only in case that they actually contain
 a line of text.
 
 In case that a section does not contain any line of content but introduces a set
-of subsections, one blank line for separation is sufficient.
+of subsections instead, one blank line for separation is sufficient.
 
 ```
 # Section 1
