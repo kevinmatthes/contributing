@@ -462,8 +462,8 @@ parameter list **must** be filled with `void` instead.
 
 ### Comments
 
-Any Markdown file shall be finished with a comment of 80 characters which only
-contains hyphens:
+Any Markdown file shall be finished with a comment of eighty characters which
+only contains hyphens:
 
 ```
 <!----------------------------------------------------------------------------->
@@ -488,11 +488,18 @@ using `#` characters.
 
 
 
+### Indentation
+
+Indentation has to be made using **four spaces** per level.  Tab characters
+(`\t`) **must not** be used.
+
+
+
 ### Sections
 
-Sections shall be separated by 3 blank lines from neighbouring ones.  This also
-concerns sections of different level but only in case that they actually contain
-a line of text.
+Sections shall be separated by three blank lines from neighbouring ones.  This
+also concerns sections of different level but only in case that they actually
+contain a line of text.
 
 In case that a section does not contain any line of content but introduces a set
 of subsections instead, one blank line for separation is sufficient.
