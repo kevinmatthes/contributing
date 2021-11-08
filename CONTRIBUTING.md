@@ -493,6 +493,40 @@ using `#` characters.
 Indentation has to be made using **four spaces** per level.  Tab characters
 (`\t`) **must not** be used.
 
+When using enumerations or itemisations, **at least two spaces** shall be used.
+For each level of the itemisation, **two spaces** need to be set.  The number
+of spaces for numeric enumerations depends on the count of digits $c$.  In
+general, the count of spaces is $c + 1$ since not only the digits itself need to
+be regarded, but also the enumeration dot.
+
+Enumeration numbers are aligned by their first digits **and not by their first
+digits meaning**.
+
+```
+<!-- Level 1. -->
+    <!-- Level 2. -->
+
+* Level 1.
+  * Level 2.
+
+1.  One.
+    1. One: One.
+    2. One: Two.
+2.  Two.
+3.  Three.
+4.  Four.
+5.  Five.
+6.  Six.
+7.  Seven.
+8.  Eight.
+9.  Nine.
+10. Ten.
+```
+
+In short: when using enumerations or itemisations, the first column of the next
+level of indentation is determined by the first column of the actual content of
+the previous level of indentation.
+
 
 
 ### Sections
