@@ -456,4 +456,42 @@ If available, `typedef` types shall be used instead of their definitions.
 In case that functions do not need to receive any data as parameters, their
 parameter list **must** be filled with `void` instead.
 
+
+
+## Markdown
+
+### Comments
+
+Any Markdown file shall be finished with a comment of 80 characters which only
+contains hyphens:
+
+```
+<!----------------------------------------------------------------------------->
+```
+
+This procedure shall ensure that contributed Markdown files can compiled with
+`pandoc` properly.
+
+
+
+### Sections
+
+Sections shall be separated by 3 blank lines from neighbouring ones.  This also
+concerns sections of different level but only in case that they actually contain
+a line of text.
+
+```
+# Section 1
+
+## Subsection 1.1
+
+Foo bar ...
+
+
+
+### Subsubsection 1.1.1
+```
+
+Sections shall be introduced by `#` characters, one character per level.
+
 <!----------------------------------------------------------------------------->
