@@ -213,7 +213,7 @@ used in order to increment multiple variables.
 All code and comments shall be written using **British English** with *-ise*
 suffixes.
 
-As in the terminology of LaTeX, there will be *no* **French Spacing** such that
+As in the terminology of \LaTeX, there will be *no* **French Spacing** such that
 after finishing a phrase, two space characters or a line break must be placed.
 This is only required if there will be another sentence following the previous
 one.
@@ -475,7 +475,7 @@ This procedure shall ensure that contributed Markdown files can compiled with
 Since Markdown allows multiple styles of commenting, comments which do not
 concern the file itself but the content (inactivating / activating certain
 sections of the text) shall follow the compilation language's rules.  For
-example, when compiled with `pandoc`, Markdown files will be converted into TeX
+example, when compiled with `pandoc`, Markdown files will be converted into \TeX
 files, at first.  Hence, comments which belong to the text are introduced using
 `%` characters at the beginning of the comment.
 
@@ -485,6 +485,18 @@ file's purpose, they shall be marked as such using the Markdown syntax.
 Comments for meta data blocks must always follow the conventions of the
 according language.  This is, if YAML is used, comments need to be introduced
 using `#` characters.
+
+
+
+### Compilation
+
+Any Markdown file needs to be formatted such that a compilation with `pandoc`
+will result in the same layout.  Some Markdown interpreters allow, for example,
+that itemisations do not need to be separated from the previous text.  `pandoc`,
+instead, requires it in order to ensure the itemisation to be recognised as one.
+
+Hence, a Markdown file can be considered well-formatted in case that `pandoc`
+produces the intended result of the file.
 
 
 
@@ -526,6 +538,25 @@ digits' meaning**.
 In short: when using enumerations or itemisations, the first column of the next
 level of indentation is determined by the first column of the actual content of
 the previous level of indentation.
+
+
+
+### Meta Data
+
+`pandoc` can be instructed how the result shall be produced by stating meta data
+at the input file's beginning.  The language therefore is YAML.  YAML blocks
+shall to be introduced and finished by `---` at the beginning of the document.
+See `pandoc`'s documentation for possible values.
+
+Since the Markdown documents are rendered by GitHub, as well, it is recommended
+to separate the meta data from the actual content by saving them in a separate
+file.  The file extension therefore shall be `*.yaml` although there are further
+equivalent extensions for YAML.  Since most of the settings can be considered
+constant for multiple files, constants should be outsourced into a further file
+in order to avoid redundant data.
+
+The recommended file extension for Markdown-related YAML is chosen in order to
+distinct it from other YAML files.
 
 
 
