@@ -497,10 +497,10 @@ When using enumerations or itemisations, **at least two spaces** shall be used.
 For each level of the itemisation, **two spaces** need to be set.  The number
 of spaces for numeric enumerations depends on the count of digits $c$.  In
 general, the count of spaces is $c + 1$ since not only the digits itself need to
-be regarded, but also the enumeration dot.
+be regarded but also the enumeration dot.
 
 Enumeration numbers are aligned by their first digits **and not by their first
-digits meaning**.
+digits' meaning**.
 
 ```
 <!-- Level 1. -->
