@@ -472,6 +472,20 @@ contains hyphens:
 This procedure shall ensure that contributed Markdown files can compiled with
 `pandoc` properly.
 
+Since Markdown allows multiple styles of commenting, comments which do not
+concern the file itself but the content (inactivating / activating certain
+sections of the text) shall follow the compilation language's rules.  For
+example, when compiled with `pandoc`, Markdown files will be converted into TeX
+files, at first.  Hence, comments which belong to the text are introduced using
+`%` characters at the beginning of the comment.
+
+If a comment belongs to the Markdown file, such as license information or file
+purpose, they shall be marked as such using the Markdown syntax.
+
+Comments for meta data blocks must always follow the conventions of the
+according language.  This is, if YAML is used, comments need to be introduced
+using `#` characters.
+
 
 
 ### Sections
@@ -479,6 +493,9 @@ This procedure shall ensure that contributed Markdown files can compiled with
 Sections shall be separated by 3 blank lines from neighbouring ones.  This also
 concerns sections of different level but only in case that they actually contain
 a line of text.
+
+In case that a section does not contain any line of content but introduces a set
+of subsections, one blank line for separation is sufficient.
 
 ```
 # Section 1
@@ -492,6 +509,7 @@ Foo bar ...
 ### Subsubsection 1.1.1
 ```
 
-Sections shall be introduced by `#` characters, one character per level.
+Sections shall be introduced by `#` characters, one character per level.  Other
+valid possibilities **must not** be used.
 
 <!----------------------------------------------------------------------------->
