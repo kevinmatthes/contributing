@@ -55,9 +55,9 @@ situated close to the license information.
 After -- or, in case the exception of the license information placement rule can
 be applied, before -- the license information, a separation of eighty characters
 shall be placed in order to separate the information header of the file from its
-effective content.  This separator has to a comment according to the language's
+effective content.  This separator must be a comment according to the language's
 commenting conventions which does only contain the last character of the nested
-comment's opening token.  In case language should not have any nested comments
+comment's opening token.  In case a language should not have any nested comments
 or the application of this rule would cause problems due to the repetition of
 the last character of the opening token, the line comment shall be used instead.
 In case a language should not have a convention for line comments and the
@@ -65,7 +65,7 @@ repetition of the last character of the opening token would cause problems,
 neutral filling characters shall be used instead, such as `|`, `=`, `-`, for
 instance.  In case that one of the comment types should be more common than the
 other one, for instance the line comment in VHDL, the respective comment type
-shall be used as in case other one would cause problems.
+shall be used as in case the other one would cause problems.
 
 ```
 /* C and related languages, such as C++, Java and even SQL (nested comment). */
