@@ -36,6 +36,74 @@ since they may differ between different languages.
 
 
 
+## General Conventions
+
+### License
+
+The license shall be attached at the document's beginning as a comment.  The
+sole exception to this rule is the case that the actual file content is brief
+enough, this is about one or two lines, such that the whole file can be shown on
+a single display page.
+
+Any file needs to contain the license information.
+
+In order to determine the file's purpose easily, all files must contain a brief
+line what this file will do.  This explanation shall also carry information
+where to find the project details and the full license text and shall be
+situated close to the license information.
+
+After -- or, in case the exception of the license information placement rule can
+be applied, before -- the license information, a separation of eighty characters
+shall be placed in order to separate the information header of the file from its
+effective content.  This separator has to a comment according to the language's
+commenting conventions which does only contain the last character of the nested
+comment's opening token.  In case language should not have any nested comments
+or the application of this rule would cause problems due to the repetition of
+the last character of the opening token, the line comment shall be used instead.
+In case a language should not have a convention for line comments and the
+repetition of the last character of the opening token would cause problems,
+neutral filling characters shall be used instead, such as `|`, `=`, `-`, for
+instance.  In case that one of the comment types should be more common than the
+other one, for instance the line comment in VHDL, the respective comment type
+shall be used as in case other one would cause problems.
+
+```
+/* C and related languages, such as C++, Java and even SQL (nested comment). */
+/******************************************************************************/
+
+{- Haskell. -}
+{------------------------------------------------------------------------------}
+
+# Julia.
+#==============================================================================#
+
+# Python.
+################################################################################
+
+<!-- Markdown and related languages. -->
+<!----------------------------------------------------------------------------->
+
+<!-- SVG. -->
+<!--|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||-->
+
+-- VHDL.
+--||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||--
+```
+
+
+
+### Trailing Newline
+
+Any file shall end with an empty line.
+
+
+
+### Trailing Whitespaces
+
+Trailing whitespaces (spaces and tab characters) on any line shall be cropped.
+
+
+
 ## C
 
 ### Brackets
