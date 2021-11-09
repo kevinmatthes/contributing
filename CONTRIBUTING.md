@@ -334,8 +334,9 @@ Integers of type `int` oder `unsigned int` shall be annotated using their
 hexadecimal notation.
 
 ```
+int             i   = 0x0;
 long long int   ll  = 0LL;
-unsigned int    u   = 0x0;
+unsigned int    u   = 0U;
 ```
 
 
