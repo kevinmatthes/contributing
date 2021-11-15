@@ -538,7 +538,7 @@ only contains hyphens:
 <!----------------------------------------------------------------------------->
 ```
 
-This procedure shall ensure that contributed Markdown files can compiled with
+This procedure shall ensure that contributed Markdown files can be compiled with
 `pandoc` properly.
 
 Since Markdown allows multiple styles of commenting, comments which do not
