@@ -29,5 +29,9 @@
 
 ################################################################################
 
-# File types.
+# Documentations.
 *.pdf
+
+# Lexer compilations.
+british
+lex.*.c
