@@ -28,15 +28,19 @@
 %{
     void    subst_char  (const char old, const char new);
 %}
-center      "center"
-color       "color"
-replace_z   "iza"|"ize"
+
+center  "center"
+color   "color"
+
+z_rule  "iza"|"ize"
 
 %% /***************************************************************************/
 
 {center}    { yytext = "centre"; ECHO; };
 {color}     { yyleng++; yytext = "colour"; ECHO; };
-{replace_z} { subst_char ('z', 's'); ECHO; };
+
+{z_rule}    { subst_char ('z', 's'); ECHO; };
+
 .           { ECHO; };
 
 %% /***************************************************************************/
