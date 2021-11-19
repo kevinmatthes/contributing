@@ -29,12 +29,16 @@
     void    subst_char  (const char old, const char new);
 %}
 
-center  "center"
-color   "color"
+exception   ("prize"|"size")
 
-z_rule  "iza"|"ize"
+center      "center"
+color       "color"
+
+z_rule      "iza"|"ize"
 
 %% /***************************************************************************/
+
+{exception} { ECHO; };
 
 {center}    { yytext = "centre"; ECHO; };
 {color}     { yyleng++; yytext = "colour"; ECHO; };
