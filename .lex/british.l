@@ -57,7 +57,7 @@ int     main        (void)
 
 void    subst_char  (const char old, const char new)
 {
-    for (unsigned long long i = 0x0; yytext[i]; i++)
+    for (unsigned long long int i = 0x0; yytext[i]; i++)
         if (yytext[i] == old)
             yytext[i] = new;
 
