@@ -27,12 +27,14 @@
 
 whitespace  [ \t\n]+
 bf          "{"{whitespace}*"\\bf"{whitespace}*
+definition  "ommand"{whitespace}*{bf}
 
 %% /***************************************************************************/
 
-{bf}        { yyleng = 0x4; yytext = "\\bf{"; ECHO; };
+{definition}    { ECHO; };
+{bf}            { yyleng = 0x4; yytext = "\\bf{"; ECHO; };
 
-.           { ECHO; };
+.               { ECHO; };
 
 %% /***************************************************************************/
 
