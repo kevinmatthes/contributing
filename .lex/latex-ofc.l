@@ -1,5 +1,5 @@
 /**
- * latex-bf.l : a lexer which corrects wrong applications of the `\bf' macro.
+ * latex-ofc.l : a lexer which corrects old font command applications.
  *
  * See `LICENSE' for full license.
  * See `README.md' for project details.
@@ -25,14 +25,20 @@
 
 /******************************************************************************/
 
+bf          "\\bf"
+it          "\\it"
+ofc         ({bf}|{it})
 whitespace  [ \t\n]+
-bf          "{"{whitespace}*"\\bf"{whitespace}*
-definition  "ommand"{whitespace}*{bf}
+
+definition  "ommand"{whitespace}*"{"{ofc}
+occ_bf      "{"{whitespace}*{bf}{whitespace}*
+occ_it      "{"{whitespace}*{it}{whitespace}*
 
 %% /***************************************************************************/
 
 {definition}    { ECHO; };
-{bf}            { yyleng = 0x4; yytext = "\\bf{"; ECHO; };
+{occ_bf}        { yyleng = 0x4; yytext = "\\bf{"; ECHO; };
+{occ_it}        { yyleng = 0x4; yytext = "\\it{"; ECHO; };
 
 .               { ECHO; };
 
