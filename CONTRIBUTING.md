@@ -527,6 +527,20 @@ parameter list **must** be filled with `void` instead.
 
 
 
+## \LaTeX
+
+### Old Font Commands
+
+Old font commands, such as `\bf` or `\it`, **must not** be used.  Instead, they
+should be either replaced by their newer counterparts (`\textbf`, `\textit`) or
+overwritten as an abbreviation of them.  Then, they should be adjusted regarding
+their position within the curly brackets' range.
+
+In order to process the latter step easier, especially for large projects, this
+repository provides a lexer therefore:  `latex-ofc`.
+
+
+
 ## Markdown
 
 ### Comments
