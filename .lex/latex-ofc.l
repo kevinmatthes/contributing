@@ -26,7 +26,7 @@
 /******************************************************************************/
 
 %{
-    void echo (const char * const string);
+    void    echo    (const char * const string);
 %}
 
 whitespace  [ \t\n]+

@@ -26,6 +26,7 @@
 /******************************************************************************/
 
 %{
+    void    echo        (const char * const string);
     void    subst_char  (const char old, const char new);
 %}
 
@@ -40,22 +41,28 @@ z_rule      "iza"|"ize"
 
 {exception} { ECHO; };
 
-{center}    { yytext = "centre"; ECHO; };
-{color}     { yyleng++; yytext = "colour"; ECHO; };
+{center}    echo ("centre");
+{color}     echo ("colour");
 
-{z_rule}    { subst_char ('z', 's'); ECHO; };
+{z_rule}    subst_char ('z', 's'); ECHO;
 
-.           { ECHO; };
+.           ECHO;
 
 %% /***************************************************************************/
 
-int     main        (void)
+inline void echo (const char * const string)
+{
+    fprintf (yyout, "%s", string);
+    return;
+}
+
+int main (void)
 {
     yylex ();
     return 0x0;
 }
 
-void    subst_char  (const char old, const char new)
+void subst_char (const char old, const char new)
 {
     for (unsigned long long int i = 0x0; yytext[i]; i++)
         if (yytext[i] == old)
