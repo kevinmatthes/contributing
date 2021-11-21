@@ -25,26 +25,38 @@
 
 /******************************************************************************/
 
-bf          "\\bf"
-it          "\\it"
-ofc         ({bf}|{it})
+%{
+    void echo (const char * const string);
+%}
+
 whitespace  [ \t\n]+
 
+bf          {whitespace}*"\\bf"{whitespace}*
+it          {whitespace}*"\\it"{whitespace}*
+
+ofc         ({bf}|{it})
+
 definition  "ommand"{whitespace}*"{"{ofc}
-occ_bf      "{"{whitespace}*{bf}{whitespace}*
-occ_it      "{"{whitespace}*{it}{whitespace}*
+occ_bf      "{"{bf}
+occ_it      "{"{it}
 
 %% /***************************************************************************/
 
-{definition}    { ECHO; };
-{occ_bf}        { yyleng = 0x4; yytext = "\\bf{"; ECHO; };
-{occ_it}        { yyleng = 0x4; yytext = "\\it{"; ECHO; };
+{definition}    ECHO;
+{occ_bf}        echo ("\\textbf{");
+{occ_it}        echo ("\\textit{");
 
-.               { ECHO; };
+.               ECHO;
 
 %% /***************************************************************************/
 
-int     main        (void)
+inline void echo (const char * const string)
+{
+    fprintf (yyout, "%s", string);
+    return;
+}
+
+int main (void)
 {
     yylex ();
     return 0x0;
