@@ -35,9 +35,14 @@
 #
 ##
 
+CC				:= gcc
 CONTRIBUTING	:= ./CONTRIBUTING.md
 COPY			:= cp
-DIRS			:= ../.docs/
+DIRS			:= ../.docs/ ../.lex/
+LEXFILES		:= $(wildcard ./.lex/*.l)
+LEXERS			:= $(subst ex/,.lex/, $(subst .l,, $(LEXFILES)))
+LEX				:= lex
+LEXOUT			:= ./lex.yy.c
 LICENSE			:= ./LICENSE
 LISTER			:= cat
 LSTART			:= ./.docs/license_begin.md
@@ -51,6 +56,7 @@ PFLAGS			:= -N
 README			:= ./README.md
 SOFTWARE		:= ./.docs/software_requirements.md
 SUPER_SOFTWARE	:= ../.docs/software_requirements.md
+REMOVE			:= rm
 YAML			:= $(wildcard ./.docs/*.yaml)
 
 
@@ -63,15 +69,23 @@ YAML			:= $(wildcard ./.docs/*.yaml)
 
 .PHONY: default
 default: submodule
+	make tidy
 
 $(DIRS):
 	$(NEWDIR) $@
+
+.PHONY: lexers
+lexers: $(LEXERS)
+
+$(LEXERS): $(LEXFILES)
+	$(foreach lexfile, $^, $(shell $(LEX) $(lexfile) ; $(CC) -lfl $(LEXOUT) \
+	-o $(subst ex/,.lex/, $(subst .l,, $(lexfile)))))
 
 .PHONY: license
 license: $(LICENSE)
 	$(COPY) $^ ../
 
-$(PDF):	$(CONTRIBUTING) $(LICENSE) $(LSTART) $(LSTOP) $(NEWPAGE) $(README)	\
+$(PDF):	$(CONTRIBUTING) $(LICENSE) $(LSTART) $(LSTOP) $(NEWPAGE) $(README) \
 		$(SOFTWARE) $(YAML)
 	$(LISTER)	$(YAML)							$(NEWPAGE) \
 				$(README)						$(NEWPAGE) \
@@ -81,10 +95,15 @@ $(PDF):	$(CONTRIBUTING) $(LICENSE) $(LSTART) $(LSTOP) $(NEWPAGE) $(README)	\
 	| $(PANDOC) $(PFLAGS) -o $@
 
 .PHONY: submodule
-submodule:	$(CONTRIBUTING) $(DIRS) $(LSTART) $(LSTOP) $(META_CONST)	\
+submodule:	$(CONTRIBUTING) $(DIRS) $(LEXERS) $(LSTART) $(LSTOP) $(META_CONST) \
 			$(NEWPAGE)
 	$(COPY)	$(LSTART) $(LSTOP) $(META_CONST) $(NEWPAGE) ../.docs/
+	$(COPY) $(LEXERS) ../.lex/
 	$(COPY) $(CONTRIBUTING) ../
 
 $(SUPER_SOFTWARE): $(DIRS) $(SOFTWARE)
 	$(COPY) $(SOFTWARE) ../.docs/
+
+.PHONY: tidy
+tidy: $(LEXERS) $(PDF)
+	$(REMOVE) $^ $(LEXOUT)
