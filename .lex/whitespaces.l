@@ -54,8 +54,6 @@ case2   {content}{space}
 
 {content}   ECHO; NEWLINE;
 
-.           ECHO;
-
 %% /***************************************************************************/
 
 inline void crop_newline (void)
