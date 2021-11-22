@@ -26,18 +26,52 @@
 /******************************************************************************/
 
 %{
-    void    echo    (const char * const string);
+    #define NEWLINE echo ("\n")
+    #define YYLAST  yytext[yyleng - 0x1]
+
+    void    crop_newline    (void);
+    void    crop_space      (void);
+    void    echo            (const char * const string);
 %}
 
+space   [ \t]+
+token   [^ \t\n]+
 
+content {token}?({space}{token})*
+eol     {space}"\n"
+line    {content}"\n"
+
+case1   {content}{eol}
+case2   {content}{space}
 
 %% /***************************************************************************/
 
+{line}      ECHO;
+{eol}       NEWLINE;
 
+{case1}     crop_newline (); crop_space (); ECHO; NEWLINE;
+{case2}     crop_space (); ECHO; NEWLINE;
 
-.               ECHO;
+{content}   ECHO; NEWLINE;
+
+.           ECHO;
 
 %% /***************************************************************************/
+
+inline void crop_newline (void)
+{
+    YYLAST = 0x0;
+    yyleng--;
+    return;
+}
+
+void crop_space (void)
+{
+    for (; YYLAST == ' ' || YYLAST == '\t'; yyleng--)
+        YYLAST = 0x0;
+
+    return;
+}
 
 inline void echo (const char * const string)
 {
