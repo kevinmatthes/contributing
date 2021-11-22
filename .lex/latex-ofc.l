@@ -26,27 +26,33 @@
 /******************************************************************************/
 
 %{
+    #include <stdbool.h>
+
     void    echo    (const char * const string);
+
+    bool    bf_override = false;
+    bool    it_override = false;
 %}
 
 whitespace  [ \t\n]+
 
-bf          {whitespace}*"\\bf"{whitespace}*
-it          {whitespace}*"\\it"{whitespace}*
+bf          {whitespace}?"\\bf"{whitespace}?
+definition  "ommand"{whitespace}?"{"
+it          {whitespace}?"\\it"{whitespace}?
 
-ofc         ({bf}|{it})
-
-definition  "ommand"{whitespace}*"{"{ofc}
+def_bf      {definition}{bf}
+def_it      {definition}{it}
 occ_bf      "{"{bf}
 occ_it      "{"{it}
 
 %% /***************************************************************************/
 
-{definition}    ECHO;
-{occ_bf}        echo ("\\textbf{");
-{occ_it}        echo ("\\textit{");
+{def_bf}    bf_override = true; ECHO;
+{def_it}    it_override = true; ECHO;
+{occ_bf}    echo (bf_override ? "\\bf{" : "\\textbf{");
+{occ_it}    echo (it_override ? "\\it{" : "\\textit{");
 
-.               ECHO;
+.           ECHO;
 
 %% /***************************************************************************/
 
