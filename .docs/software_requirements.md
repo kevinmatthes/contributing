@@ -73,8 +73,8 @@ features:
 
 ## `lex` (`LEX`)
 
-The default UNIX utility for scanner creation is required in order to create the
-sources files from the lex files of this repository.
+The default UNIX utility for scanner creation is required in order to create C
+sources files for compilation from the lex files of this repository.
 
 It should not be altered.  `lex` is part of the `flex` package.
 
