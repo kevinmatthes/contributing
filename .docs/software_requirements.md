@@ -57,6 +57,29 @@ It can be altered as desired.
 
 
 
+## `gcc` (`CC`)
+
+The C source code of this project needs to be compiled using an according
+compiler which supports at least C99.
+
+It can be altered as desired as long as the substitute supports the following
+features:
+
+* standard C99
+* passing of symbolic constants (`#define`)
+* linking with static C libraries
+
+
+
+## `lex` (`LEX`)
+
+The default UNIX utility for scanner creation is required in order to create the
+sources files from the lex files of this repository.
+
+It should not be altered.  `lex` is part of the `flex` package.
+
+
+
 ## `mkdir` (`NEWDIR`)
 
 The default UNIX utility in order to create new directories ensures mandatory
@@ -74,6 +97,15 @@ version of this project's documentation.
 
 Altering this application could be difficult since the compilation routine of
 the documentation is designed for `pandoc`.
+
+
+
+## `rm` (`REMOVE`)
+
+The default UNIX utility for deleting files is used in order to remove build
+artifacts when they are not required any longer.
+
+It can be altered as desired.
 
 
 
