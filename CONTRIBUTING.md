@@ -34,9 +34,26 @@ will be listed and explained in the following.
 Please note that the conventions are sorted by the concerning coding languages
 since they may differ between different languages.
 
+For some conventions, lexers are provided within the `.lex` directory of the
+repository.  Running them over the source files ensures the described rules to
+be fulfilled.  If there should be a lexer for a certain rule, its name will be
+given in parenthesis after the name of the top-most rule.
+
 
 
 ## General Conventions
+
+### Language (`british.l`)
+
+All code and comments shall be written using **British English** with *-ise*
+suffixes.
+
+As in the terminology of \LaTeX, there will be *no* **French Spacing** such that
+after finishing a phrase, two space characters or a line break must be placed.
+This is only required if there will be another sentence following the previous
+one.
+
+
 
 ### License
 
@@ -92,13 +109,13 @@ shall be used as in case the other one would cause problems.
 
 
 
-### Trailing Newline
+### Trailing Newline (`whitespaces.l`)
 
 Any file shall end with an empty line.
 
 
 
-### Trailing Whitespaces
+### Trailing Whitespaces (`whitespaces.l`)
 
 Trailing whitespaces (spaces and tab characters) on any line shall be cropped.
 
@@ -273,18 +290,6 @@ summarised using commas.
 
 The sole exception to this rule are `for` loops where the comma is allowed to be
 used in order to increment multiple variables.
-
-
-
-### Language
-
-All code and comments shall be written using **British English** with *-ise*
-suffixes.
-
-As in the terminology of \LaTeX, there will be *no* **French Spacing** such that
-after finishing a phrase, two space characters or a line break must be placed.
-This is only required if there will be another sentence following the previous
-one.
 
 
 
@@ -529,15 +534,12 @@ parameter list **must** be filled with `void` instead.
 
 ## \LaTeX
 
-### Old Font Commands
+### Old Font Commands (`latex-ofc.l`)
 
 Old font commands, such as `\bf` or `\it`, **must not** be used.  Instead, they
 should be either replaced by their newer counterparts (`\textbf`, `\textit`) or
 overwritten as an abbreviation of them.  Then, they should be adjusted regarding
 their position within the curly brackets' range.
-
-In order to process the latter step easier, especially for large projects, this
-repository provides a lexer therefore:  `latex-ofc`.
 
 
 
