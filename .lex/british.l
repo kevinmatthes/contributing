@@ -37,9 +37,6 @@ whitespace      [ \t\n]+
 
 exception       ("prize"|"size")
 
-center          "center"
-color           "color"
-
 punctation_rule {punctation}" "{text}
 z_rule          "iza"|"ize"
 
@@ -47,8 +44,8 @@ z_rule          "iza"|"ize"
 
 {exception}         ECHO;
 
-{center}            echo ("centre");
-{color}             echo ("colour");
+"center"            echo ("centre");
+"color"             echo ("colour");
 
 {punctation_rule}   head_char (); echo ("  "); echo (& yytext[0x2]);
 {z_rule}            subst_char ('z', 's'); ECHO;
