@@ -105,5 +105,5 @@ $(SUPER_SOFTWARE): $(DIRS) $(SOFTWARE)
 	$(COPY) $(SOFTWARE) ../.docs/
 
 .PHONY: tidy
-tidy: $(LEXERS) $(PDF)
-	$(REMOVE) $^ $(LEXOUT)
+tidy: $(LEXERS)
+	$(REMOVE) $^ $(LEXOUT) $(wildcard ./*.pdf)
