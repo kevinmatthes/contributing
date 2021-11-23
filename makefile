@@ -107,3 +107,5 @@ $(SUPER_SOFTWARE): $(DIRS) $(SOFTWARE)
 .PHONY: tidy
 tidy: $(LEXERS)
 	$(REMOVE) $^ $(LEXOUT) $(wildcard ./*.pdf)
+
+################################################################################
