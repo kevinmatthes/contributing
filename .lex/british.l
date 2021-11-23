@@ -27,32 +27,45 @@
 
 %{
     void    echo        (const char * const string);
+    void    head_char   (void);
     void    subst_char  (const char old, const char new);
 %}
 
-exception   ("prize"|"size")
+punctation      ("."|"?"|"!"|":")
+text            [^ \t\n]+
+whitespace      [ \t\n]+
 
-center      "center"
-color       "color"
+exception       ("prize"|"size")
 
-z_rule      "iza"|"ize"
+center          "center"
+color           "color"
+
+punctation_rule {punctation}" "{text}
+z_rule          "iza"|"ize"
 
 %% /***************************************************************************/
 
-{exception} { ECHO; };
+{exception}         ECHO;
 
-{center}    echo ("centre");
-{color}     echo ("colour");
+{center}            echo ("centre");
+{color}             echo ("colour");
 
-{z_rule}    subst_char ('z', 's'); ECHO;
+{punctation_rule}   head_char (); echo ("  "); echo (& yytext[0x2]);
+{z_rule}            subst_char ('z', 's'); ECHO;
 
-.           ECHO;
+.                   ECHO;
 
 %% /***************************************************************************/
 
 inline void echo (const char * const string)
 {
     fprintf (yyout, "%s", string);
+    return;
+}
+
+inline void head_char (void)
+{
+    fprintf (yyout, "%c", yytext[0x0]);
     return;
 }
 
