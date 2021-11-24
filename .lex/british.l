@@ -26,31 +26,35 @@
 /******************************************************************************/
 
 %{
+    #define YYLAST  yytext[yyleng - 0x1]
+
     void    echo        (const char * const string);
     void    head_char   (void);
     void    subst_char  (const char old, const char new);
 %}
 
-punctation      ("."|"?"|"!"|":")
-text            [^ \t\n]+
-whitespace      [ \t\n]+
+punctuation "."|"?"|"!"|":"
+text        [^ \t\n]+
+whitespace  [ \t\n]+
 
-exception       ("prize"|"size")
+exception   [Bb]"or"[ei]|[Cc]"entering"|[Pp]"rize"|[Ss]"ize"
 
-punctation_rule {punctation}" "{text}
-z_rule          "iza"|"ize"
+ou          "bor"|"lor"|"vor"
+s           "iza"|"ize"
+spacing     {punctuation}" "{text}
 
 %% /***************************************************************************/
 
-{exception}         ECHO;
+{exception} ECHO;
 
-"center"            echo ("centre");
-"color"             echo ("colour");
+"center"    echo ("centre");
+"theater"   echo ("theatre");
 
-{punctation_rule}   head_char (); echo ("  "); echo (& yytext[0x2]);
-{z_rule}            subst_char ('z', 's'); ECHO;
+{ou}        head_char (); echo ("ou"); echo (& YYLAST);
+{s}         subst_char ('z', 's'); ECHO;
+{spacing}   head_char (); echo ("  "); echo (& yytext[0x2]);
 
-.                   ECHO;
+.           ECHO;
 
 %% /***************************************************************************/
 
