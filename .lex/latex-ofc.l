@@ -74,10 +74,10 @@ occ_tt  "{"{tt}
 
 {occ_bf}    echo (bf_override ? "\\bf{" : "\\textbf{");
 {occ_it}    echo (it_override ? "\\it{" : "\\textit{");
-{occ_rm}    echo (rm_override ? "\\it{" : "\\textrm{");
-{occ_sf}    echo (sf_override ? "\\it{" : "\\textsf{");
-{occ_sl}    echo (sl_override ? "\\it{" : "\\textsl{");
-{occ_tt}    echo (tt_override ? "\\it{" : "\\texttt{");
+{occ_rm}    echo (rm_override ? "\\rm{" : "\\textrm{");
+{occ_sf}    echo (sf_override ? "\\sf{" : "\\textsf{");
+{occ_sl}    echo (sl_override ? "\\sl{" : "\\textsl{");
+{occ_tt}    echo (tt_override ? "\\tt{" : "\\texttt{");
 
 .           ECHO;
 
