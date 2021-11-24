@@ -44,12 +44,16 @@ REMOVE	:= rm
 
 # Directories.
 INSTALLDIR	:= ~/.local/bin/
-DIRS		:= $(INSTALLDIR)
+SUBMODDIR	:= ../../.lex/
+DIRS		:= $(INSTALLDIR) $(SUBMODDIR)
 
-# Compilation requirements.
+# Lexer compilation requirements.
 LEXAUX		:= ./lex.yy.c
 LEXFILES	:= $(wildcard ./*.l)
 LEXERS		:= $(subst .l,, $(LEXFILES))
+
+# Further files.
+SELF	:= ./makefile
 
 
 
@@ -77,6 +81,10 @@ $(LEXERS): $(LEXFILES)
 	$(foreach lexfile, $^, \
 	$(shell	$(LEX) $(lexfile) ; \
 			$(CC) -lfl $(LEXAUX) -o  $(subst .l,, $(lexfile))))
+
+.PHONY: submodule
+submodule: $(LEXFILES) $(SELF)
+	$(COPY) $^ $(SUBMODDIR)
 
 .PHONY: tidy
 tidy: lexers

@@ -35,29 +35,37 @@
 #
 ##
 
-CC				:= gcc
+# Software.
+COPY	:= cp
+LISTER	:= cat
+NEWDIR	:= mkdir
+PANDOC	:= pandoc
+REMOVE	:= rm
+
+# Software flags.
+PFLAGS	:= -N
+
+# Make directories.
+MLEX	:= -C ./.lex/
+
+# Directories.
+DOCSDIR	:= ../.docs/
+DIRS	:= $(DOCSDIR)
+
+# File types.
+YAML	:= $(wildcard ./.docs/*.yaml)
+
+# Concrete files.
 CONTRIBUTING	:= ./CONTRIBUTING.md
-COPY			:= cp
-DIRS			:= ../.docs/ ../.lex/
-LEXFILES		:= $(wildcard ./.lex/*.l)
-LEXERS			:= $(subst ex/,.lex/, $(subst .l,, $(LEXFILES)))
-LEX				:= lex
-LEXOUT			:= ./lex.yy.c
-LICENSE			:= ./LICENSE
-LISTER			:= cat
 LSTART			:= ./.docs/license_begin.md
 LSTOP			:= ./.docs/license_end.md
 META_CONST		:= ./.docs/meta.yaml
-NEWDIR			:= mkdir
 NEWPAGE			:= ./.docs/newpage.md
-PANDOC			:= pandoc
 PDF				:= ./contributing.pdf
-PFLAGS			:= -N
 README			:= ./README.md
+LICENSE			:= ./LICENSE
 SOFTWARE		:= ./.docs/software_requirements.md
 SUPER_SOFTWARE	:= ../.docs/software_requirements.md
-REMOVE			:= rm
-YAML			:= $(wildcard ./.docs/*.yaml)
 
 
 
@@ -69,14 +77,13 @@ YAML			:= $(wildcard ./.docs/*.yaml)
 
 .PHONY: default
 default: submodule
-	make tidy
 
 $(DIRS):
 	$(NEWDIR) $@
 
 .PHONY: lexers
 lexers:
-	make -C ./.lex/ lexers
+	make $(MLEX) lexers
 
 .PHONY: license
 license: $(LICENSE)
@@ -92,18 +99,17 @@ $(PDF):	$(CONTRIBUTING) $(LICENSE) $(LSTART) $(LSTOP) $(NEWPAGE) $(README) \
 	| $(PANDOC) $(PFLAGS) -o $@
 
 .PHONY: submodule
-submodule:	$(CONTRIBUTING) $(DIRS) $(LEXERS) $(LSTART) $(LSTOP) $(META_CONST) \
-			$(NEWPAGE)
-	$(COPY)	$(LSTART) $(LSTOP) $(META_CONST) $(NEWPAGE) ../.docs/
-	$(COPY) $(LEXFILES) ../.lex/
+submodule:	$(CONTRIBUTING) $(DIRS) $(LSTART) $(LSTOP) $(META_CONST) $(NEWPAGE)
+	$(COPY)	$(LSTART) $(LSTOP) $(META_CONST) $(NEWPAGE) $(DOCSDIR)
 	$(COPY) $(CONTRIBUTING) ../
+	make $(MLEX) submodule
 
 $(SUPER_SOFTWARE): $(DIRS) $(SOFTWARE)
-	$(COPY) $(SOFTWARE) ../.docs/
+	$(COPY) $(SOFTWARE) $(DOCSDIR)
 
 .PHONY: tidy
 tidy: $(PDF)
 	$(REMOVE) $^
-	make -C ./.lex/ tidy
+	make $(MLEX) tidy
 
 ################################################################################
