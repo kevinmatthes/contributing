@@ -32,6 +32,10 @@
 
     bool    bf_override = false;
     bool    it_override = false;
+    bool    rm_override = false;
+    bool    sf_override = false;
+    bool    sl_override = false;
+    bool    tt_override = false;
 %}
 
 whitespace  [ \t\n]+
@@ -39,18 +43,40 @@ whitespace  [ \t\n]+
 bf          {whitespace}?"\\bf"{whitespace}?
 definition  "ommand"{whitespace}?"{"
 it          {whitespace}?"\\it"{whitespace}?
+rm          {whitespace}?"\\rm"{whitespace}?
+sf          {whitespace}?"\\sf"{whitespace}?
+sl          {whitespace}?"\\sl"{whitespace}?
+tt          {whitespace}?"\\tt"{whitespace}?
 
 def_bf      {definition}{bf}
 def_it      {definition}{it}
+def_rm      {definition}{rm}
+def_sf      {definition}{sf}
+def_sl      {definition}{sl}
+def_tt      {definition}{tt}
+
 occ_bf      "{"{bf}
 occ_it      "{"{it}
+occ_rm      "{"{rm}
+occ_sf      "{"{sf}
+occ_sl      "{"{sl}
+occ_tt      "{"{tt}
 
 %% /***************************************************************************/
 
 {def_bf}    bf_override = true; ECHO;
 {def_it}    it_override = true; ECHO;
+{def_rm}    rm_override = true; ECHO;
+{def_sf}    sf_override = true; ECHO;
+{def_sl}    sl_override = true; ECHO;
+{def_tt}    tt_override = true; ECHO;
+
 {occ_bf}    echo (bf_override ? "\\bf{" : "\\textbf{");
 {occ_it}    echo (it_override ? "\\it{" : "\\textit{");
+{occ_rm}    echo (it_override ? "\\it{" : "\\textrm{");
+{occ_sf}    echo (it_override ? "\\it{" : "\\textsf{");
+{occ_sl}    echo (it_override ? "\\it{" : "\\textsl{");
+{occ_tt}    echo (it_override ? "\\it{" : "\\texttt{");
 
 .           ECHO;
 
