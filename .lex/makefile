@@ -52,7 +52,7 @@ LEXAUX		:= ./lex.yy.c
 LEXFILES	:= $(wildcard ./*.l)
 LEXERS		:= $(subst .l,, $(LEXFILES))
 
-# Further files.
+# Concrete files.
 SELF	:= ./makefile
 
 
