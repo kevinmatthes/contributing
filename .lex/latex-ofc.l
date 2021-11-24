@@ -40,7 +40,7 @@
 
 whitespace  [ \t\n]+
 
-definition  "ommand"{whitespace}?"{"
+definition  [Cc]"ommand"{whitespace}?"{"
 
 bf  {whitespace}?"\\bf"{whitespace}?
 it  {whitespace}?"\\it"{whitespace}?
