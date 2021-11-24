@@ -83,8 +83,8 @@ $(LEXERS): $(LEXFILES)
 			$(CC) -lfl $(LEXAUX) -o  $(subst .l,, $(lexfile))))
 
 .PHONY: submodule
-submodule: $(LEXFILES) $(SELF)
-	$(COPY) $^ $(SUBMODDIR)
+submodule: $(LEXFILES) $(SELF) $(SUBMODDIR)
+	$(COPY) $(LEXFILES) $(SELF) $(SUBMODDIR)
 
 .PHONY: tidy
 tidy: lexers
