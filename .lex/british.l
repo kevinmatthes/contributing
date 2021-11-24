@@ -37,21 +37,23 @@ punctuation "."|"?"|"!"|":"
 text        [^ \t\n]+
 whitespace  [ \t\n]+
 
-exception   [Bb]"or"[ei]|[Cc]"entering"|[Pp]"rize"|[Ss]"ize"
-
-ou          "bor"|"lor"|"vor"
-s           "iza"|"ize"
+ou          [BbLlVv][Oo][Rr]|[Mm][Oo][Ss]
+s           [Ii][Zz][AaEe]
 spacing     {punctuation}" "{text}
 
 %% /***************************************************************************/
 
-{exception} ECHO;
+[Bb][Oo][Rr][EeIi]      ECHO;
+[IiYy][Ll][Oo][Rr]      ECHO;
+[Mm][Oo][Ss]{text}      ECHO;
+Mr?[rs]". "{text}       ECHO;
+[PpSs][Rr]?[Ii][Zz][Ee] ECHO;
 
 "center"    echo ("centre");
 "theater"   echo ("theatre");
 
 {ou}        head_char (); echo ("ou"); echo (& YYLAST);
-{s}         subst_char ('z', 's'); ECHO;
+{s}         subst_char ('Z', 'S'); subst_char ('z', 's'); ECHO;
 {spacing}   head_char (); echo ("  "); echo (& yytext[0x2]);
 
 .           ECHO;
