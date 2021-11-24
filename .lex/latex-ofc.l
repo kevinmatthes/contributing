@@ -40,27 +40,28 @@
 
 whitespace  [ \t\n]+
 
-bf          {whitespace}?"\\bf"{whitespace}?
 definition  "ommand"{whitespace}?"{"
-it          {whitespace}?"\\it"{whitespace}?
-rm          {whitespace}?"\\rm"{whitespace}?
-sf          {whitespace}?"\\sf"{whitespace}?
-sl          {whitespace}?"\\sl"{whitespace}?
-tt          {whitespace}?"\\tt"{whitespace}?
 
-def_bf      {definition}{bf}
-def_it      {definition}{it}
-def_rm      {definition}{rm}
-def_sf      {definition}{sf}
-def_sl      {definition}{sl}
-def_tt      {definition}{tt}
+bf  {whitespace}?"\\bf"{whitespace}?
+it  {whitespace}?"\\it"{whitespace}?
+rm  {whitespace}?"\\rm"{whitespace}?
+sf  {whitespace}?"\\sf"{whitespace}?
+sl  {whitespace}?"\\sl"{whitespace}?
+tt  {whitespace}?"\\tt"{whitespace}?
 
-occ_bf      "{"{bf}
-occ_it      "{"{it}
-occ_rm      "{"{rm}
-occ_sf      "{"{sf}
-occ_sl      "{"{sl}
-occ_tt      "{"{tt}
+def_bf  {definition}{bf}
+def_it  {definition}{it}
+def_rm  {definition}{rm}
+def_sf  {definition}{sf}
+def_sl  {definition}{sl}
+def_tt  {definition}{tt}
+
+occ_bf  "{"{bf}
+occ_it  "{"{it}
+occ_rm  "{"{rm}
+occ_sf  "{"{sf}
+occ_sl  "{"{sl}
+occ_tt  "{"{tt}
 
 %% /***************************************************************************/
 
