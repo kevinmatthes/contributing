@@ -85,7 +85,7 @@ license: $(LICENSE)
 
 .PHONY: pdf
 pdf:
-	make $(MDOCS) $(PDF)
+	make $(MDOCS) default
 
 .PHONY: software
 software:
