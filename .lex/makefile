@@ -79,8 +79,8 @@ $(LEXERS): $(LEXFILES)
 			$(CC) -lfl $(LEXAUX) -o  $(subst .l,, $(lexfile))))
 
 .PHONY: tidy
-tidy: $(LEXERS)
-	$(REMOVE) $^ $(wildcard ./lex.*.c)
+tidy: lexers
+	$(REMOVE) $(LEXAUX) $(LEXERS)
 
 .PHONY: uninstall
 uninstall: install

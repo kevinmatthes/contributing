@@ -75,11 +75,8 @@ $(DIRS):
 	$(NEWDIR) $@
 
 .PHONY: lexers
-lexers: $(LEXERS)
-
-$(LEXERS): $(LEXFILES)
-	$(foreach lexfile, $^, $(shell $(LEX) $(lexfile) ; $(CC) -lfl $(LEXOUT) \
-	-o $(subst ex/,.lex/, $(subst .l,, $(lexfile)))))
+lexers:
+	make -C ./.lex/ lexers
 
 .PHONY: license
 license: $(LICENSE)
@@ -98,14 +95,15 @@ $(PDF):	$(CONTRIBUTING) $(LICENSE) $(LSTART) $(LSTOP) $(NEWPAGE) $(README) \
 submodule:	$(CONTRIBUTING) $(DIRS) $(LEXERS) $(LSTART) $(LSTOP) $(META_CONST) \
 			$(NEWPAGE)
 	$(COPY)	$(LSTART) $(LSTOP) $(META_CONST) $(NEWPAGE) ../.docs/
-	$(COPY) $(LEXERS) ../.lex/
+	$(COPY) $(LEXFILES) ../.lex/
 	$(COPY) $(CONTRIBUTING) ../
 
 $(SUPER_SOFTWARE): $(DIRS) $(SOFTWARE)
 	$(COPY) $(SOFTWARE) ../.docs/
 
 .PHONY: tidy
-tidy: $(LEXERS)
-	$(REMOVE) $^ $(LEXOUT) $(wildcard ./*.pdf)
+tidy: $(PDF)
+	$(REMOVE) $^
+	make -C ./.lex/ tidy
 
 ################################################################################
