@@ -35,29 +35,21 @@
 #
 ##
 
-CC				:= gcc
-CONTRIBUTING	:= ./CONTRIBUTING.md
-COPY			:= cp
-DIRS			:= ../.docs/ ../.lex/
-LEXFILES		:= $(wildcard ./.lex/*.l)
-LEXERS			:= $(subst ex/,.lex/, $(subst .l,, $(LEXFILES)))
-LEX				:= lex
-LEXOUT			:= ./lex.yy.c
-LICENSE			:= ./LICENSE
-LISTER			:= cat
-LSTART			:= ./.docs/license_begin.md
-LSTOP			:= ./.docs/license_end.md
-META_CONST		:= ./.docs/meta.yaml
-NEWDIR			:= mkdir
-NEWPAGE			:= ./.docs/newpage.md
-PANDOC			:= pandoc
-PDF				:= ./contributing.pdf
-PFLAGS			:= -N
-README			:= ./README.md
-SOFTWARE		:= ./.docs/software_requirements.md
-SUPER_SOFTWARE	:= ../.docs/software_requirements.md
-REMOVE			:= rm
-YAML			:= $(wildcard ./.docs/*.yaml)
+# Software.
+CC		:= gcc
+COPY	:= cp
+LEX		:= lex
+NEWDIR	:= mkdir
+REMOVE	:= rm
+
+# Directories.
+INSTALLDIR	:= ~/.local/bin/
+DIRS		:= $(INSTALLDIR)
+
+# Compilation requirements.
+LEXAUX		:= ./lex.yy.c
+LEXFILES	:= $(wildcard ./*.l)
+LEXERS		:= $(subst .l,, $(LEXFILES))
 
 
 
@@ -68,44 +60,30 @@ YAML			:= $(wildcard ./.docs/*.yaml)
 ##
 
 .PHONY: default
-default: submodule
-	make tidy
+default: lexers
 
 $(DIRS):
 	$(NEWDIR) $@
+
+.PHONY: install
+install: $(INSTALLDIR) $(LEXERS)
+	$(COPY) $(LEXERS) $(INSTALLDIR)
+	make tidy
 
 .PHONY: lexers
 lexers: $(LEXERS)
 
 $(LEXERS): $(LEXFILES)
-	$(foreach lexfile, $^, $(shell $(LEX) $(lexfile) ; $(CC) -lfl $(LEXOUT) \
-	-o $(subst ex/,.lex/, $(subst .l,, $(lexfile)))))
-
-.PHONY: license
-license: $(LICENSE)
-	$(COPY) $^ ../
-
-$(PDF):	$(CONTRIBUTING) $(LICENSE) $(LSTART) $(LSTOP) $(NEWPAGE) $(README) \
-		$(SOFTWARE) $(YAML)
-	$(LISTER)	$(YAML)							$(NEWPAGE) \
-				$(README)						$(NEWPAGE) \
-				$(SOFTWARE)						$(NEWPAGE) \
-				$(CONTRIBUTING)					$(NEWPAGE) \
-				$(LSTART) $(LICENSE) $(LSTOP)	\
-	| $(PANDOC) $(PFLAGS) -o $@
-
-.PHONY: submodule
-submodule:	$(CONTRIBUTING) $(DIRS) $(LEXERS) $(LSTART) $(LSTOP) $(META_CONST) \
-			$(NEWPAGE)
-	$(COPY)	$(LSTART) $(LSTOP) $(META_CONST) $(NEWPAGE) ../.docs/
-	$(COPY) $(LEXERS) ../.lex/
-	$(COPY) $(CONTRIBUTING) ../
-
-$(SUPER_SOFTWARE): $(DIRS) $(SOFTWARE)
-	$(COPY) $(SOFTWARE) ../.docs/
+	$(foreach lexfile, $^, \
+	$(shell	$(LEX) $(lexfile) ; \
+			$(CC) -lfl $(LEXAUX) -o  $(subst .l,, $(lexfile))))
 
 .PHONY: tidy
 tidy: $(LEXERS)
-	$(REMOVE) $^ $(LEXOUT) $(wildcard ./*.pdf)
+	$(REMOVE) $^ $(wildcard ./lex.*.c)
+
+.PHONY: uninstall
+uninstall: install
+	$(foreach lexer, $(LEXERS), $(REMOVE) -f $(INSTALLDIR)$(lexer))
 
 ################################################################################
