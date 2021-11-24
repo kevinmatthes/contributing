@@ -46,26 +46,16 @@ REMOVE	:= rm
 PFLAGS	:= -N
 
 # Make directories.
+MDOCS	:= -C ./.docs/
 MLEX	:= -C ./.lex/
 
 # Directories.
 DOCSDIR	:= ../.docs/
 DIRS	:= $(DOCSDIR)
 
-# File types.
-YAML	:= $(wildcard ./.docs/*.yaml)
-
 # Concrete files.
 CONTRIBUTING	:= ./CONTRIBUTING.md
-LSTART			:= ./.docs/license_begin.md
-LSTOP			:= ./.docs/license_end.md
-META_CONST		:= ./.docs/meta.yaml
-NEWPAGE			:= ./.docs/newpage.md
-PDF				:= ./contributing.pdf
-README			:= ./README.md
 LICENSE			:= ./LICENSE
-SOFTWARE		:= ./.docs/software_requirements.md
-SUPER_SOFTWARE	:= ../.docs/software_requirements.md
 
 
 
@@ -81,6 +71,10 @@ default: submodule
 $(DIRS):
 	$(NEWDIR) $@
 
+.PHONY: install
+install:
+	make $(MLEX) install
+
 .PHONY: lexers
 lexers:
 	make $(MLEX) lexers
@@ -89,27 +83,27 @@ lexers:
 license: $(LICENSE)
 	$(COPY) $^ ../
 
-$(PDF):	$(CONTRIBUTING) $(LICENSE) $(LSTART) $(LSTOP) $(NEWPAGE) $(README) \
-		$(SOFTWARE) $(YAML)
-	$(LISTER)	$(YAML)							$(NEWPAGE) \
-				$(README)						$(NEWPAGE) \
-				$(SOFTWARE)						$(NEWPAGE) \
-				$(CONTRIBUTING)					$(NEWPAGE) \
-				$(LSTART) $(LICENSE) $(LSTOP)	\
-	| $(PANDOC) $(PFLAGS) -o $@
+.PHONY: pdf
+pdf:
+	make $(MDOCS) $(PDF)
+
+.PHONY: software
+software:
+	make $(MDOCS) software
 
 .PHONY: submodule
-submodule:	$(CONTRIBUTING) $(DIRS) $(LSTART) $(LSTOP) $(META_CONST) $(NEWPAGE)
-	$(COPY)	$(LSTART) $(LSTOP) $(META_CONST) $(NEWPAGE) $(DOCSDIR)
+submodule:	$(CONTRIBUTING)
 	$(COPY) $(CONTRIBUTING) ../
+	make $(MDOCS) submodule
 	make $(MLEX) submodule
 
-$(SUPER_SOFTWARE): $(DIRS) $(SOFTWARE)
-	$(COPY) $(SOFTWARE) $(DOCSDIR)
-
 .PHONY: tidy
-tidy: $(PDF)
-	$(REMOVE) $^
+tidy:
+	make $(MDOCS) tidy
 	make $(MLEX) tidy
+
+.PHONY: uninstall
+uninstall:
+	make $(MLEX) uninstall
 
 ################################################################################
