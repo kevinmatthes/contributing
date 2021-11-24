@@ -29,8 +29,8 @@
     #define YYLAST  yytext[yyleng - 0x1]
 
     void    echo        (const char * const string);
-    void    head_char   (void);
     void    subst_char  (const char old, const char new);
+    void    write_char  (const unsigned long long int index);
 %}
 
 punctuation "."|"?"|"!"|":"
@@ -52,9 +52,22 @@ Mr?[rs]". "{text}       ECHO;
 "center"    echo ("centre");
 "theater"   echo ("theatre");
 
-{ou}        head_char (); echo ("ou"); echo (& YYLAST);
-{s}         subst_char ('Z', 'S'); subst_char ('z', 's'); ECHO;
-{spacing}   head_char (); echo ("  "); echo (& yytext[0x2]);
+{ou}        {
+                write_char (0x0);
+                write_char (0x1);
+                echo (yytext[0x1] == 'O' ? "U" : "u");
+                echo (& YYLAST);
+            };
+{s}         {
+                subst_char ('Z', 'S');
+                subst_char ('z', 's');
+                ECHO;
+            };
+{spacing}   {
+                write_char (0x0);
+                echo ("  ");
+                echo (& yytext[0x2]);
+            };
 
 .           ECHO;
 
@@ -63,12 +76,6 @@ Mr?[rs]". "{text}       ECHO;
 inline void echo (const char * const string)
 {
     fprintf (yyout, "%s", string);
-    return;
-}
-
-inline void head_char (void)
-{
-    fprintf (yyout, "%c", yytext[0x0]);
     return;
 }
 
@@ -83,6 +90,14 @@ void subst_char (const char old, const char new)
     for (unsigned long long int i = 0x0; yytext[i]; i++)
         if (yytext[i] == old)
             yytext[i] = new;
+
+    return;
+}
+
+inline void write_char (unsigned long long int index)
+{
+    if (index < yyleng - 0x1)
+        fprintf (yyout, "%c", yytext[index]);
 
     return;
 }
