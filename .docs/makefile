@@ -45,27 +45,25 @@ REMOVE	:= rm
 # Software flags.
 PFLAGS	:= -N
 
-# Make directories.
-MLEX	:= -C ./.lex/
-
 # Directories.
-DOCSDIR	:= ../.docs/
-DIRS	:= $(DOCSDIR)
+SUBMODDIR	:= ../../.docs/
+DIRS		:= $(SUBMODDIR)
 
 # File types.
-YAML	:= $(wildcard ./.docs/*.yaml)
+MARKDOWN	:= $(wildcard ./*.md)
+YAML		:= $(wildcard ./*.yaml)
 
 # Concrete files.
-CONTRIBUTING	:= ./CONTRIBUTING.md
-LSTART			:= ./.docs/license_begin.md
-LSTOP			:= ./.docs/license_end.md
-META_CONST		:= ./.docs/meta.yaml
-NEWPAGE			:= ./.docs/newpage.md
+CONTRIBUTING	:= ../CONTRIBUTING.md
+LICENSE			:= ../LICENSE
+LSTART			:= ./license_begin.md
+LSTOP			:= ./license_end.md
+META_CONST		:= ./meta.yaml
+NEWPAGE			:= ./newpage.md
 PDF				:= ./contributing.pdf
-README			:= ./README.md
-LICENSE			:= ./LICENSE
-SOFTWARE		:= ./.docs/software_requirements.md
-SUPER_SOFTWARE	:= ../.docs/software_requirements.md
+README			:= ../README.md
+SELF			:= ./makefile
+SOFTWARE		:= ./software_requirements.md
 
 
 
@@ -76,40 +74,26 @@ SUPER_SOFTWARE	:= ../.docs/software_requirements.md
 ##
 
 .PHONY: default
-default: submodule
+default: $(PDF)
 
 $(DIRS):
 	$(NEWDIR) $@
 
-.PHONY: lexers
-lexers:
-	make $(MLEX) lexers
-
-.PHONY: license
-license: $(LICENSE)
-	$(COPY) $^ ../
-
-$(PDF):	$(CONTRIBUTING) $(LICENSE) $(LSTART) $(LSTOP) $(NEWPAGE) $(README) \
-		$(SOFTWARE) $(YAML)
-	$(LISTER)	$(YAML)							$(NEWPAGE) \
-				$(README)						$(NEWPAGE) \
-				$(SOFTWARE)						$(NEWPAGE) \
-				$(CONTRIBUTING)					$(NEWPAGE) \
-				$(LSTART) $(LICENSE) $(LSTOP)	\
+$(PDF): $(CONTRIBUTING) $(LICENSE) $(MARKDOWN) $(README) $(YAML)
+	$(LISTER)	$(YAML) $(NEWPAGE) $(README) $(NEWPAGE) $(SOFTWARE) $(NEWPAGE) \
+				$(CONTRIBUTING) $(NEWPAGE)  $(LSTART) $(LICENSE) $(LSTOP)      \
 	| $(PANDOC) $(PFLAGS) -o $@
 
-.PHONY: submodule
-submodule:	$(CONTRIBUTING) $(DIRS) $(LSTART) $(LSTOP) $(META_CONST) $(NEWPAGE)
-	$(COPY)	$(LSTART) $(LSTOP) $(META_CONST) $(NEWPAGE) $(DOCSDIR)
-	$(COPY) $(CONTRIBUTING) ../
-	make $(MLEX) submodule
+.PHONY: software
+software: $(SOFTWARE) $(SUBMODDIR)
+	$(COPY) $(SOFTWARE) $(SUBMODDIR)
 
-$(SUPER_SOFTWARE): $(DIRS) $(SOFTWARE)
-	$(COPY) $(SOFTWARE) $(DOCSDIR)
+.PHONY: submodule
+submodule: $(LSTART) $(LSTOP) $(META_CONST) $(NEWPAGE) $(SELF) $(SUBMODDIR)
+	$(COPY)	$(LSTART) $(LSTOP) $(META_CONST) $(NEWPAGE) $(SELF) $(SUBMODDIR)
 
 .PHONY: tidy
 tidy: $(PDF)
 	$(REMOVE) $^
-	make $(MLEX) tidy
 
 ################################################################################
