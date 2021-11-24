@@ -64,4 +64,60 @@ full license will be attached automatically to the resulting document.
 
 ## Build Instructions
 
+### Default Build Instruction
+
+```
+make
+```
+
+This repository is intended to be bound as a submodule in projects.  It will
+copy its `CONTRIBUTING.md` as well as the major content of the directories
+`./.docs/` and `./.lex/` to the binding project.
+
+Please note that, for instance, the file `contributing.yaml` will not be copied
+to the super project since this file contains the meta for this repository.  It
+is intended to be created for the super project on demand, this is containing
+the binding project's name and short description.  Users are encouraged to name
+their project related meta data YAML file by their project.
+
+
+
+### Copy License and / or Software Requirements
+
+```
+make license
+make software
+```
+
+In order to copy either this repository's license or its list of required
+software, just run the respective command.  Note that they will override
+existing files automatically.
+
+
+
+### Documentation
+
+```
+make pdf
+```
+
+This command will compile a printable version of this documentation using
+`pandoc`.  It will be named `documentation.pdf`, by default.  Users are
+encouraged to alter this default value of the variable `PDF` as desired.
+
+
+
+### Lexers
+
+```
+make lexers
+make install
+make uninstall
+```
+
+These commands will compile the contained lexers which shall ensure the defined
+conventions to be fulfilled.  In order to alter their default installation path,
+just alter the according variable (`INSTALLDIR`) which is defined as
+`~/.local/bin/`, by default.
+
 <!----------------------------------------------------------------------------->
