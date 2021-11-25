@@ -257,7 +257,7 @@ Functions **must not** be defined, but declared, applying this rule on their
 signature.  This is, only when a function is *declared*, its return type,
 identifier and parameter list need to be separated by pressing the tab key once.
 If it is actually *defined*, return type, identifier and parameter list shall be
-separated by a single space character.  This exception shall ensure the
+separated by a single space character only.  This exception shall ensure the
 declaration lists of functions, especially in headers, to be intuitive readable.
 On the other hand, it ensures definitions of functions being well recognisable,
 as well.
