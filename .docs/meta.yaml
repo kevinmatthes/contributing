@@ -30,10 +30,26 @@
 
 ################################################################################
 
-author:         Kevin Matthes
-date:           \today
-documentclass:  scrartcl
-geometry:       top = 3 cm, bottom = 3 cm, inner = 3 cm, outer = 3 cm, twoside = true
-lang:           en-GB
-toc:            true
+author:
+  - Kevin Matthes
+
+date:
+  - \today
+
+documentclass:
+  - scrartcl
+
+geometry:
+  - bottom  = 3 cm
+  - inner   = 3 cm
+  - outer   = 3 cm
+  - top     = 3 cm
+  - twoside = true
+
+lang:
+  - en-GB
+
+toc:
+  - true
+
 ---

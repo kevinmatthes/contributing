@@ -30,6 +30,10 @@
 
 ################################################################################
 
-title:    Contribution Guidelines for My Projects
-subtitle: The Central Repository for the Default `CONTRIBUTING.md`
+title:
+  - Contribution Guidelines for My Projects
+
+subtitle:
+  - The Central Repository for the Default `CONTRIBUTING.md`
+
 ---
