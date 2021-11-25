@@ -1,5 +1,5 @@
 /**
- * whitespaces.l : a lexer which corrects whitespace issues.
+ * line-length.l : a lexer which assures the maximum line length of 80 chars.
  *
  * See `LICENSE' for full license.
  * See `README.md' for project details.
@@ -26,54 +26,25 @@
 /******************************************************************************/
 
 %{
-    #define NEWLINE echo ("\n")
-    #define YYLAST  yytext[yyleng - 0x1]
+    void    complain    (void);
 
-    void    crop_newline    (void);
-    void    crop_space      (void);
-    void    echo            (const char * const string);
+    unsigned long long int  linecount   = 0x1;
 %}
 
-space   [ \t]+
-token   [^ \t\n]+
+%% /***************************************************************************/
 
-content {token}?({space}{token})*
-eol     {space}"\n"
-line    {content}"\n"
-
-case1   {content}{eol}
-case2   {content}{space}
+[^\n]*"\n"  if (yyleng > 0x51) complain (); linecount++;
 
 %% /***************************************************************************/
 
-{line}      ECHO;
-{eol}       NEWLINE;
-
-{case1}     crop_newline (); crop_space (); ECHO; NEWLINE;
-{case2}     crop_space (); ECHO; NEWLINE;
-
-{content}   ECHO; NEWLINE;
-
-%% /***************************************************************************/
-
-inline void crop_newline (void)
+inline void complain (void)
 {
-    YYLAST = 0x0;
-    yyleng--;
-    return;
-}
-
-void crop_space (void)
-{
-    for (; YYLAST == ' ' || YYLAST == '\t'; yyleng--)
-        YYLAST = 0x0;
-
-    return;
-}
-
-inline void echo (const char * const string)
-{
-    fprintf (yyout, "%s", string);
+    fprintf ( yyout
+            , "%lld (%d): %s"
+            , linecount
+            , yyleng - 0x51
+            , yytext
+            );
     return;
 }
 
