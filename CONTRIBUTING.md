@@ -109,14 +109,14 @@ shall be used as in case the other one would cause problems.
 
 
 
-### Line Length (`whitesapces.l`)
+### Line Length (`line-length.l`)
 
 In general, if no exception is defined, lines shall contain at most eighty
 characters plus a newline whitespace each.
 
 
 
-### Trailing Newline (`whitespaces.l`)
+### Trailing Newline (`line-length.l`, `whitespaces.l`)
 
 Any file shall end with an empty line.
 
