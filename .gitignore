@@ -36,6 +36,7 @@ lex.*.c
 # Lexer compilations.
 british
 latex-ofc
+line-length
 whitespaces
 
 ################################################################################

@@ -39,9 +39,12 @@
     bool    tt_override = false;
 %}
 
+command     "\\"(("re"?"new"|"provide")"c"|"DeclareRobustC")"ommand"
 whitespace  [ \t\n]+
 
-definition  [Cc]"ommand"{whitespace}?"{"
+definition      {command}{whitespace}?"{"
+override_on     "%"[  \t]*"#define"[ \t]+"__LATEX_COMMAND__"
+override_off    "__"[ \t]*"\n"
 
 bf  {whitespace}?"\\bf"{whitespace}?
 em  {whitespace}?"\\em"{whitespace}?
@@ -50,6 +53,8 @@ rm  {whitespace}?"\\rm"{whitespace}?
 sf  {whitespace}?"\\sf"{whitespace}?
 sl  {whitespace}?"\\sl"{whitespace}?
 tt  {whitespace}?"\\tt"{whitespace}?
+
+ofc {bf}|{em}|{rm}|{sf}|{sl}|{tt}
 
 def_bf  {definition}{bf}
 def_em  {definition}{em}
@@ -67,15 +72,25 @@ occ_sf  "{"{sf}
 occ_sl  "{"{sl}
 occ_tt  "{"{tt}
 
+ovr_bf  {override_on}"BF"{override_off}
+ovr_em  {override_on}"EM"{override_off}
+ovr_it  {override_on}"IT"{override_off}
+ovr_rm  {override_on}"RM"{override_off}
+ovr_sf  {override_on}"SF"{override_off}
+ovr_sl  {override_on}"SL"{override_off}
+ovr_tt  {override_on}"TT"{override_off}
+
 %% /***************************************************************************/
 
-{def_bf}    bf_override = true; ECHO;
-{def_em}    em_override = true; ECHO;
-{def_it}    it_override = true; ECHO;
-{def_rm}    rm_override = true; ECHO;
-{def_sf}    sf_override = true; ECHO;
-{def_sl}    sl_override = true; ECHO;
-{def_tt}    tt_override = true; ECHO;
+"%"[^\n]*{definition}{ofc}[^\n]*"\n"    ECHO;
+
+{def_bf}|{ovr_bf}   bf_override = true; ECHO;
+{def_em}|{ovr_em}   em_override = true; ECHO;
+{def_it}|{ovr_it}   it_override = true; ECHO;
+{def_rm}|{ovr_rm}   rm_override = true; ECHO;
+{def_sf}|{ovr_sf}   sf_override = true; ECHO;
+{def_sl}|{ovr_sl}   sl_override = true; ECHO;
+{def_tt}|{ovr_tt}   tt_override = true; ECHO;
 
 {occ_bf}    echo (bf_override ? "\\bf{" : "\\textbf{");
 {occ_em}    echo (em_override ? "\\em{" : "\\emph{");
@@ -85,7 +100,7 @@ occ_tt  "{"{tt}
 {occ_sl}    echo (sl_override ? "\\sl{" : "\\textsl{");
 {occ_tt}    echo (tt_override ? "\\tt{" : "\\texttt{");
 
-.           ECHO;
+.   ECHO;
 
 %% /***************************************************************************/
 
