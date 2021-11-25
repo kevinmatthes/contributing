@@ -26,25 +26,54 @@
 /******************************************************************************/
 
 %{
-    void    complain    (void);
+    #include <stdbool.h>
 
+    #define MAX_LENGTH      YYLAST == '\n' ? 0x51 : 0x50
+    #define NEWLINE         if (complained) echo ("\n");
+    #define RESET           complained = false;
+    #define YYLAST          yytext[yyleng - 0x1]
+
+    void    complain_length (void);
+    void    complain_line   (void);
+    void    echo            (const char * const string);
+
+    bool                    complained  = false;
     unsigned long long int  linecount   = 0x1;
 %}
 
 %% /***************************************************************************/
 
-[^\n]*"\n"  if (yyleng > 0x51) complain (); linecount++;
+[^\n]*"\n"  complain_length(); linecount++; RESET;
+[^\n]*      complain_length(); NEWLINE; complain_line (); RESET;
 
 %% /***************************************************************************/
 
-inline void complain (void)
+inline void complain_length (void)
 {
-    fprintf ( yyout
-            , "%lld (%d): %s"
-            , linecount
-            , yyleng - 0x51
-            , yytext
-            );
+    if (yyleng > (MAX_LENGTH))
+    {
+        fprintf ( yyout
+                , "%lld (%d): %s"
+                , linecount
+                , yyleng - (MAX_LENGTH)
+                , yytext
+                );
+
+        complained = true;
+    };
+
+    return;
+}
+
+inline void complain_line (void)
+{
+    fprintf (yyout, "%lld: No newline whitespace at the end!\n", linecount);
+    return;
+}
+
+inline void echo (const char * const string)
+{
+    fprintf (yyout, "%s", string);
     return;
 }
 
