@@ -253,6 +253,15 @@ entering a type name, the tabulator key needs to be pressed once.  An exception
 to this rule are parameter lists.  For instance, this rule would be applied to
 the signature of a function.
 
+Functions **must not** be defined, but declared, applying this rule on their
+signature.  This is, only when a function is *declared*, its return type,
+identifier and parameter list need to be separated by pressing the tab key once.
+If it is actually *defined*, return type, identifier and parameter list shall be
+separated by a single space character.  This exception shall ensure the
+declaration lists of functions, especially in headers, to be intuitive readable.
+On the other hand, it ensures definitions of functions being well recognisable,
+as well.
+
 After entering an identifier, such as a function's or variable's name, for
 example, the next lexeme shall start at the next tab stop, too.  This, again,
 needs to be applied to a function's declaration.
@@ -264,12 +273,15 @@ that nothing is returned, `return` and `;` must not be separated by spaces.
 Example:
 
 ```
-void    foo (void)
+void    foo     (void);
+type_t  foo_    (type_t parameter);
+
+void foo (void)
 {
     return;
 }
 
-type_t  foo_    (type_t parameter)
+type_t foo_ (type_t parameter)
 {
     type_t  ret_    = ONE;
     return ret_;
