@@ -31,7 +31,6 @@
     void    echo    (const char * const string);
 
     bool    bf_override = false;
-    bool    em_override = false;
     bool    it_override = false;
     bool    rm_override = false;
     bool    sf_override = false;
@@ -47,17 +46,15 @@ override_on     "%"[  \t]*"#define"[ \t]+"__LATEX_COMMAND__"
 override_off    "__"[ \t]*"\n"
 
 bf  {whitespace}?"\\bf"{whitespace}?
-em  {whitespace}?"\\em"{whitespace}?
 it  {whitespace}?"\\it"{whitespace}?
 rm  {whitespace}?"\\rm"{whitespace}?
 sf  {whitespace}?"\\sf"{whitespace}?
 sl  {whitespace}?"\\sl"{whitespace}?
 tt  {whitespace}?"\\tt"{whitespace}?
 
-ofc {bf}|{em}|{rm}|{sf}|{sl}|{tt}
+ofc {bf}|{rm}|{sf}|{sl}|{tt}
 
 def_bf  {definition}{bf}
-def_em  {definition}{em}
 def_it  {definition}{it}
 def_rm  {definition}{rm}
 def_sf  {definition}{sf}
@@ -65,7 +62,6 @@ def_sl  {definition}{sl}
 def_tt  {definition}{tt}
 
 occ_bf  "{"{bf}
-occ_em  "{"{em}
 occ_it  "{"{it}
 occ_rm  "{"{rm}
 occ_sf  "{"{sf}
@@ -73,7 +69,6 @@ occ_sl  "{"{sl}
 occ_tt  "{"{tt}
 
 ovr_bf  {override_on}"BF"{override_off}
-ovr_em  {override_on}"EM"{override_off}
 ovr_it  {override_on}"IT"{override_off}
 ovr_rm  {override_on}"RM"{override_off}
 ovr_sf  {override_on}"SF"{override_off}
@@ -85,7 +80,6 @@ ovr_tt  {override_on}"TT"{override_off}
 "%"[^\n]*{definition}{ofc}[^\n]*"\n"    ECHO;
 
 {def_bf}|{ovr_bf}   bf_override = true; ECHO;
-{def_em}|{ovr_em}   em_override = true; ECHO;
 {def_it}|{ovr_it}   it_override = true; ECHO;
 {def_rm}|{ovr_rm}   rm_override = true; ECHO;
 {def_sf}|{ovr_sf}   sf_override = true; ECHO;
@@ -93,7 +87,6 @@ ovr_tt  {override_on}"TT"{override_off}
 {def_tt}|{ovr_tt}   tt_override = true; ECHO;
 
 {occ_bf}    echo (bf_override ? "\\bf{" : "\\textbf{");
-{occ_em}    echo (em_override ? "\\em{" : "\\emph{");
 {occ_it}    echo (it_override ? "\\it{" : "\\textit{");
 {occ_rm}    echo (rm_override ? "\\rm{" : "\\textrm{");
 {occ_sf}    echo (sf_override ? "\\sf{" : "\\textsf{");
