@@ -90,7 +90,7 @@ software: $(SOFTWARE) $(SUBMODDIR)
 
 .PHONY: submodule
 submodule: $(LSTART) $(LSTOP) $(META_CONST) $(NEWPAGE) $(SELF) $(SUBMODDIR)
-	$(COPY)	$(LSTART) $(LSTOP) $(META_CONST) $(NEWPAGE) $(SELF) $(SUBMODDIR)
+	$(COPY) $(LSTART) $(LSTOP) $(META_CONST) $(NEWPAGE) $(SELF) $(SUBMODDIR)
 
 .PHONY: tidy
 tidy: $(PDF)

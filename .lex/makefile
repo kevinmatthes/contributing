@@ -78,9 +78,8 @@ install: $(INSTALLDIR) $(LEXERS)
 lexers: $(LEXERS)
 
 $(LEXERS): $(LEXFILES)
-	$(foreach lexfile, $^, \
-	$(shell	$(LEX) $(lexfile) ; \
-			$(CC) -lfl $(LEXAUX) -o  $(subst .l,, $(lexfile))))
+	$(foreach lexfile, $^, $(shell $(LEX) $(lexfile) ; $(CC) -lfl $(LEXAUX) -o \
+	$(subst .l,, $(lexfile))))
 
 .PHONY: submodule
 submodule: $(LEXFILES) $(SELF) $(SUBMODDIR)

@@ -92,7 +92,7 @@ software:
 	make $(MDOCS) software
 
 .PHONY: submodule
-submodule:	$(CONTRIBUTING)
+submodule: $(CONTRIBUTING)
 	$(COPY) $(CONTRIBUTING) ../
 	make $(MDOCS) submodule
 	make $(MLEX) submodule
