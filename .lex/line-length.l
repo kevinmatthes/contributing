@@ -48,7 +48,7 @@
 
 %% /***************************************************************************/
 
-inline void complain_length (void)
+void complain_length (void)
 {
     if (yyleng > (MAX_LENGTH))
     {

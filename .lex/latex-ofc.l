@@ -31,6 +31,7 @@
     void    echo    (const char * const string);
 
     bool    bf_override = false;
+    bool    em_override = false;
     bool    it_override = false;
     bool    rm_override = false;
     bool    sf_override = false;
@@ -43,6 +44,7 @@ whitespace  [ \t\n]+
 definition  [Cc]"ommand"{whitespace}?"{"
 
 bf  {whitespace}?"\\bf"{whitespace}?
+em  {whitespace}?"\\em"{whitespace}?
 it  {whitespace}?"\\it"{whitespace}?
 rm  {whitespace}?"\\rm"{whitespace}?
 sf  {whitespace}?"\\sf"{whitespace}?
@@ -50,6 +52,7 @@ sl  {whitespace}?"\\sl"{whitespace}?
 tt  {whitespace}?"\\tt"{whitespace}?
 
 def_bf  {definition}{bf}
+def_em  {definition}{em}
 def_it  {definition}{it}
 def_rm  {definition}{rm}
 def_sf  {definition}{sf}
@@ -57,6 +60,7 @@ def_sl  {definition}{sl}
 def_tt  {definition}{tt}
 
 occ_bf  "{"{bf}
+occ_em  "{"{em}
 occ_it  "{"{it}
 occ_rm  "{"{rm}
 occ_sf  "{"{sf}
@@ -66,6 +70,7 @@ occ_tt  "{"{tt}
 %% /***************************************************************************/
 
 {def_bf}    bf_override = true; ECHO;
+{def_em}    em_override = true; ECHO;
 {def_it}    it_override = true; ECHO;
 {def_rm}    rm_override = true; ECHO;
 {def_sf}    sf_override = true; ECHO;
@@ -73,6 +78,7 @@ occ_tt  "{"{tt}
 {def_tt}    tt_override = true; ECHO;
 
 {occ_bf}    echo (bf_override ? "\\bf{" : "\\textbf{");
+{occ_em}    echo (em_override ? "\\em{" : "\\emph{");
 {occ_it}    echo (it_override ? "\\it{" : "\\textit{");
 {occ_rm}    echo (rm_override ? "\\rm{" : "\\textrm{");
 {occ_sf}    echo (sf_override ? "\\sf{" : "\\textsf{");
