@@ -42,7 +42,7 @@ command     "\\"(("re"?"new"|"provide")"c"|"DeclareRobustC")"ommand"
 whitespace  [ \t\n]+
 
 definition      {command}{whitespace}?"{"
-override_on     "%"[  \t]*"#define"[ \t]+"__LATEX_COMMAND__"
+override_on     "%"[ \t]*"#define"[ \t]+"__LATEX_COMMAND__"
 override_off    "__"[ \t]*"\n"
 
 bf  {whitespace}?"\\bf"{whitespace}?
