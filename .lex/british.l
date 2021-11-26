@@ -30,7 +30,7 @@
 
     void    echo        (const char * const string);
     void    subst_char  (const char old, const char new);
-    void    write_char  (const unsigned long long int index);
+    void    write_char  (const int index);
 %}
 
 punctuation "."|"?"|"!"|":"
@@ -94,9 +94,9 @@ void subst_char (const char old, const char new)
     return;
 }
 
-inline void write_char (unsigned long long int index)
+inline void write_char (const int index)
 {
-    if (index < yyleng - 0x1)
+    if (index < yyleng)
         fprintf (yyout, "%c", yytext[index]);
 
     return;
