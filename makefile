@@ -95,7 +95,6 @@ software:
 submodule: $(CONTRIBUTING)
 	$(COPY) $(CONTRIBUTING) ../
 	make $(MDOCS) submodule
-	make $(MLEX) submodule
 
 .PHONY: tidy
 tidy:
