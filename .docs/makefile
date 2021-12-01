@@ -73,7 +73,8 @@ SOFTWARE		:= ./software_requirements.md
 #
 ##
 
-.PHONY: default
+.PHONY: default software submodule tidy
+
 default: $(PDF)
 
 $(DIRS):
@@ -84,15 +85,12 @@ $(PDF): $(CONTRIBUTING) $(LICENSE) $(MARKDOWN) $(README) $(YAML)
 				$(CONTRIBUTING) $(NEWPAGE)  $(LSTART) $(LICENSE) $(LSTOP)      \
 	| $(PANDOC) $(PFLAGS) -o $@
 
-.PHONY: software
 software: $(SOFTWARE) $(SUBMODDIR)
 	$(COPY) $(SOFTWARE) $(SUBMODDIR)
 
-.PHONY: submodule
 submodule: $(LSTART) $(LSTOP) $(META_CONST) $(NEWPAGE) $(SELF) $(SUBMODDIR)
 	$(COPY) $(LSTART) $(LSTOP) $(META_CONST) $(NEWPAGE) $(SELF) $(SUBMODDIR)
 
-.PHONY: tidy
 tidy: $(PDF)
 	$(REMOVE) $^
 
