@@ -63,33 +63,29 @@ SELF	:= ./makefile
 #
 ##
 
-.PHONY: default
+.PHONY: default install lexers submodule tidy uninstall
+
 default: lexers
 
 $(DIRS):
 	$(NEWDIR) $@
 
-.PHONY: install
 install: $(INSTALLDIR) $(LEXERS)
 	$(COPY) $(LEXERS) $(INSTALLDIR)
 	make tidy
 
-.PHONY: lexers
 lexers: $(LEXERS)
 
 $(LEXERS): $(LEXFILES)
 	$(foreach lexfile, $^, $(shell $(LEX) $(lexfile) ; $(CC) -lfl $(LEXAUX) -o \
 	$(subst .l,, $(lexfile))))
 
-.PHONY: submodule
 submodule: $(LEXFILES) $(SELF) $(SUBMODDIR)
 	$(COPY) $(LEXFILES) $(SELF) $(SUBMODDIR)
 
-.PHONY: tidy
 tidy: lexers
 	$(REMOVE) $(LEXAUX) $(LEXERS)
 
-.PHONY: uninstall
 uninstall: install
 	$(foreach lexer, $(LEXERS), $(REMOVE) -f $(INSTALLDIR)$(lexer))
 
