@@ -65,43 +65,36 @@ LICENSE			:= ./LICENSE
 #
 ##
 
-.PHONY: default
+.PHONY: default install lexers license pdf software submodule tidy uninstall
+
 default: submodule
 
 $(DIRS):
 	$(NEWDIR) $@
 
-.PHONY: install
 install:
 	make $(MLEX) install
 
-.PHONY: lexers
 lexers:
 	make $(MLEX) lexers
 
-.PHONY: license
 license: $(LICENSE)
 	$(COPY) $^ ../
 
-.PHONY: pdf
 pdf:
 	make $(MDOCS) default
 
-.PHONY: software
 software:
 	make $(MDOCS) software
 
-.PHONY: submodule
 submodule: $(CONTRIBUTING)
 	$(COPY) $(CONTRIBUTING) ../
 	make $(MDOCS) submodule
 
-.PHONY: tidy
 tidy:
 	make $(MDOCS) tidy
 	make $(MLEX) tidy
 
-.PHONY: uninstall
 uninstall:
 	make $(MLEX) uninstall
 
