@@ -72,7 +72,7 @@ make
 
 This repository is intended to be bound as a submodule in projects.  It will
 copy its `CONTRIBUTING.md` as well as the major content of the directories
-`./.docs/` and `./.lex/` to the binding project.
+`./.docs/` and `./lex/` to the binding project.
 
 Please note that, for instance, the file `contributing.yaml` will not be copied
 to the super project since this file contains the meta for this repository.  It

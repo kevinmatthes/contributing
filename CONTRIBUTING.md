@@ -34,7 +34,7 @@ will be listed and explained in the following.
 Please note that the conventions are sorted by the concerning coding languages
 since they may differ between different languages.
 
-For some conventions, lexers are provided within the `.lex` directory of the
+For some conventions, lexers are provided by the `lex` directory of the
 repository.  Running them over the source files ensures the described rules to
 be fulfilled.  If there should be a lexer for a certain rule, its name will be
 given in parenthesis after the name of the top-most rule.

@@ -47,7 +47,7 @@ PFLAGS	:= -N
 
 # Make directories.
 MDOCS	:= -C ./.docs/
-MLEX	:= -C ./.lex/
+MLEX	:= -C ./lex/
 
 # Directories.
 DOCSDIR	:= ../.docs/

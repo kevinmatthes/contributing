@@ -44,7 +44,7 @@ REMOVE	:= rm
 
 # Directories.
 INSTALLDIR	:= ~/.local/bin/
-SUBMODDIR	:= ../../.lex/
+SUBMODDIR	:= ../../lex/
 DIRS		:= $(INSTALLDIR) $(SUBMODDIR)
 
 # Lexer compilation requirements.
