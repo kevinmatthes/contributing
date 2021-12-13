@@ -82,7 +82,6 @@ extern  FILE *  yyout;
 
 // Tidying up.
 #ifndef __LIBLEX_INTERNAL__
-#undef  YYLAST
 #endif  // ! __LIBLEX_INTERNAL__
 
 // Leaving the header.
