@@ -26,8 +26,9 @@
 /******************************************************************************/
 
 %{
+    #include "liblex.h"
+
     #define NEWLINE echo ("\n")
-    #define YYLAST  yytext[yyleng - 0x1]
 
     void    crop_newline    (void);
     void    crop_space      (void);
@@ -69,18 +70,6 @@ void crop_space (void)
         YYLAST = 0x0;
 
     return;
-}
-
-inline void echo (const char * const string)
-{
-    fprintf (yyout, "%s", string);
-    return;
-}
-
-int main (void)
-{
-    yylex ();
-    return 0x0;
 }
 
 /******************************************************************************/

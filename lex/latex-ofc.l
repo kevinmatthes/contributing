@@ -26,9 +26,7 @@
 /******************************************************************************/
 
 %{
-    #include <stdbool.h>
-
-    void    echo    (const char * const string);
+    #include "liblex.h"
 
     bool    bf_override = false;
     bool    it_override = false;
@@ -96,17 +94,5 @@ ovr_tt  {override_on}"TT"{override_off}
 .   ECHO;
 
 %% /***************************************************************************/
-
-inline void echo (const char * const string)
-{
-    fprintf (yyout, "%s", string);
-    return;
-}
-
-int main (void)
-{
-    yylex ();
-    return 0x0;
-}
 
 /******************************************************************************/

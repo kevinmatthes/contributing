@@ -26,16 +26,14 @@
 /******************************************************************************/
 
 %{
-    #include <stdbool.h>
+    #include "liblex.h"
 
     #define MAX_LENGTH      YYLAST == '\n' ? 0x51 : 0x50
     #define NEWLINE         if (complained) echo ("\n");
     #define RESET           complained = false;
-    #define YYLAST          yytext[yyleng - 0x1]
 
     void    complain_length (void);
     void    complain_line   (void);
-    void    echo            (const char * const string);
 
     bool                    complained  = false;
     unsigned long long int  linecount   = 0x1;
@@ -69,18 +67,6 @@ inline void complain_line (void)
 {
     fprintf (yyout, "%lld: No newline whitespace at the end!\n", linecount);
     return;
-}
-
-inline void echo (const char * const string)
-{
-    fprintf (yyout, "%s", string);
-    return;
-}
-
-int main (void)
-{
-    yylex ();
-    return 0x0;
 }
 
 /******************************************************************************/

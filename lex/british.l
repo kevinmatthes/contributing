@@ -26,9 +26,8 @@
 /******************************************************************************/
 
 %{
-    #define YYLAST  yytext[yyleng - 0x1]
+    #include "liblex.h"
 
-    void    echo        (const char * const string);
     void    subst_char  (const char old, const char new);
     void    write_char  (const int index);
 %}
@@ -72,18 +71,6 @@ Mr?[rs]". "{text}       ECHO;
 .   ECHO;
 
 %% /***************************************************************************/
-
-inline void echo (const char * const string)
-{
-    fprintf (yyout, "%s", string);
-    return;
-}
-
-int main (void)
-{
-    yylex ();
-    return 0x0;
-}
 
 void subst_char (const char old, const char new)
 {
