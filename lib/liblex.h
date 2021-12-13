@@ -65,6 +65,7 @@
 // Utility functions.
 extern  void    echo    (const char * const string);
 extern  int     main    (void);
+extern  int     yylex   (void);
 
 
 
