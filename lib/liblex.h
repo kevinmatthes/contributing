@@ -53,7 +53,6 @@
  * Macros.
  */
 
-// Utility defines.
 #define YYLAST  yytext[yyleng - 0x1]
 
 
@@ -66,6 +65,14 @@
 extern  void    echo    (const char * const string);
 extern  int     main    (void);
 extern  int     yylex   (void);
+
+
+
+/*
+ * Constants.
+ */
+
+extern  FILE *  yyout;
 
 
 
