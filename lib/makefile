@@ -52,8 +52,8 @@ LFLAGS	:= -lfl
 MDOX	:= -C ../.docs/latex/
 
 # Directories.
-LIBDIR	:= ../../lib/
-DIRS	:= $(LIBDIR)
+LEXDIR	:= ../lex/
+DIRS	:= $(LEXDIR)
 
 # Library compilation requirements.
 HEADERS	:= $(wildcard ./*.h)
@@ -91,6 +91,10 @@ $(LIBRARY): $(OBJECTS)
 
 $(OBJECTS): $(SOURCE)
 	$(CC) $(CFLAGS) -c $(LFLAGS) $^
+
+submodule: $(DIRS) $(HEADERS) $(LIBRARY)
+	$(COPY) $(HEADERS) $(LIBRARY) $(LEXDIR)
+	make tidy
 
 tidy: $(LIBRARY) $(OBJECTS)
 	$(REMOVE) $^

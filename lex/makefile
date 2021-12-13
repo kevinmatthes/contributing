@@ -42,15 +42,24 @@ LEX		:= lex
 NEWDIR	:= mkdir
 REMOVE	:= rm
 
+# Software flags.
+CFLAGS	:=
+LFLAGS	:= -lfl -L. -llex
+
+# Make directories.
+MLIB	:= -C ../lib/
+
 # Directories.
 INSTALLDIR	:= ~/.local/bin/
 SUBMODDIR	:= ../../lex/
 DIRS		:= $(INSTALLDIR) $(SUBMODDIR)
 
 # Lexer compilation requirements.
+HEADERS		:= ./liblex.h
 LEXAUX		:= ./lex.yy.c
 LEXFILES	:= $(wildcard ./*.l)
 LEXERS		:= $(subst .l,, $(LEXFILES))
+LIBRARY		:= ./liblex.a
 
 # Concrete files.
 SELF	:= ./makefile
@@ -76,15 +85,18 @@ install: $(INSTALLDIR) $(LEXERS)
 
 lexers: $(LEXERS)
 
-$(LEXERS): $(LEXFILES)
-	$(foreach lexfile, $^, $(shell $(LEX) $(lexfile) ; $(CC) -lfl $(LEXAUX) -o \
-	$(subst .l,, $(lexfile))))
+$(LEXERS): $(LEXFILES) $(LIBRARY)
+	$(foreach lexfile, $(LEXFILES), $(shell $(LEX) $(lexfile) ; \
+		$(CC) $(CFLAGS) $(LEXAUX) $(LFLAGS) -o $(subst .l,, $(lexfile))))
+
+$(LIBRARY):
+	make $(MLIB) submodule
 
 submodule: $(LEXFILES) $(SELF) $(SUBMODDIR)
 	$(COPY) $(LEXFILES) $(SELF) $(SUBMODDIR)
 
 tidy: lexers
-	$(REMOVE) $(LEXAUX) $(LEXERS)
+	$(REMOVE) $(HEADERS) $(LEXAUX) $(LEXERS) $(LIBRARY)
 
 uninstall: install
 	$(foreach lexer, $(LEXERS), $(REMOVE) -f $(INSTALLDIR)$(lexer))
