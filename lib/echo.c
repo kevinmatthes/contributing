@@ -17,8 +17,8 @@
  */
 
 /**
- * \file    main.c
- * \brief   A very simple main function.
+ * \file    echo.c
+ * \brief   Write a given string to yyout.
  *
  * \author      Kevin Matthes
  * \copyright   (C) 2021 Kevin Matthes.
@@ -43,10 +43,10 @@
  * Functions.
  */
 
-int main (void)
+inline void echo (const char * const string)
 {
-    yylex ();
-    return 0x0;
+    fprintf (yyout, "%s", string);
+    return;
 }
 
 /******************************************************************************/
