@@ -72,7 +72,10 @@ extern  int     yylex   (void);
  * Constants.
  */
 
+extern  char *  yytext;
+extern  FILE *  yyin;
 extern  FILE *  yyout;
+extern  int     yyleng;
 
 
 
