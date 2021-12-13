@@ -31,6 +31,8 @@
 
 # Build artifacts.
 lex.*.c
+*.a
+*.o
 *.pdf
 
 # Lexer compilations.
