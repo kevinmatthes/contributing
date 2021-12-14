@@ -37,11 +37,15 @@
 
 # Software.
 COPY	:= cp
+REMOVE	:= rm
 
 # Make directories.
 MDOCS	:= -C ./.docs/
 MLIB	:= -C ./lib/
 MLEX	:= -C ./lex/
+
+# Directories.
+DOXDIR	:= ./.docs/html/ ./.docs/latex/
 
 # Concrete files.
 CONTRIBUTING	:= ./CONTRIBUTING.md
@@ -105,7 +109,8 @@ submodule: $(CONTRIBUTING)
 	$(COPY) $(CONTRIBUTING) ../
 	make $(MDOCS) submodule
 
-tidy:
+tidy: $(REMFAN)
+	$(REMOVE) $(DOXDIR) $(wildcard ./*.pdf) -rf
 	make $(MDOCS) tidy
 	make $(MLIB) tidy
 	make $(MLEX) tidy

@@ -34,6 +34,10 @@ lex/*.h
 lex.*.c
 *.a
 *.o
+
+# Documentation.
+.docs/html
+.docs/latex
 *.pdf
 
 # Lexer compilations.
