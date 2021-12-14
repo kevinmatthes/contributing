@@ -90,12 +90,12 @@ $(LEXERS): $(LEXFILES) $(LIBRARY)
 		$(CC) $(CFLAGS) $(LEXAUX) $(LFLAGS) -o $(subst .l,, $(lexfile))))
 
 $(LIBRARY):
-	make $(MLIB) submodule
+	make $(MLIB) lexmodule
 
 submodule: $(LEXFILES) $(SELF) $(SUBMODDIR)
 	$(COPY) $(LEXFILES) $(SELF) $(SUBMODDIR)
 
-tidy: lexers
+tidy: $(LEXERS)
 	$(REMOVE) $(HEADERS) $(LEXAUX) $(LEXERS) $(LIBRARY)
 
 uninstall: install
