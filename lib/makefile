@@ -57,10 +57,11 @@ SUBMODDIR	:= ../../lib/
 DIRS		:= $(LEXDIR) $(SUBMODDIR)
 
 # Library compilation requirements.
-HEADERS	:= $(wildcard ./*.h)
-LIBRARY	:= ./liblex.a
-SOURCE	:= $(wildcard ./*.c)
-OBJECTS	:= $(subst .c,.o, $(SOURCE))
+DOXFILES	:= $(wildcard ./*.dox)
+HEADERS		:= $(wildcard ./*.h)
+LIBRARY		:= ./liblex.a
+SOURCE		:= $(wildcard ./*.c)
+OBJECTS		:= $(subst .c,.o, $(SOURCE))
 
 # Concrete files.
 DOXYFILE	:= ./doxygen.cfg
@@ -81,7 +82,7 @@ default: library
 $(DIRS):
 	$(NEWDIR) $@
 
-doxygen: $(HEADERS) $(SOURCE)
+doxygen: $(DOXFILES) $(HEADERS) $(SOURCE)
 	$(DOXYGEN) $(DOXYFILE)
 	make $(MDOX) all
 
