@@ -64,6 +64,13 @@
 
 
 
+/*! \fn     void crop_newline (void)
+ *
+ * \brief       Remove one trailing newline whitespace from a lexeme.
+ * \copydetails crop_newline.c
+ * \sa          yytext
+ */
+
 /*! \fn     void echo (const char * const string)
  *
  * \brief       Write a given string to `yyout`.

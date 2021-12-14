@@ -20,6 +20,14 @@
  * \file    crop_newline.c
  * \brief   Remove one trailing newline whitespace from a lexeme.
  *
+ *
+ *
+ * This inline function will remove the last character from `yytext` in case
+ * that it is a newline whitespace.  This task is frequently demanded by some
+ * lexfiles.
+ *
+ *
+ *
  * \author      Kevin Matthes
  * \copyright   (C) 2021 Kevin Matthes.
  *              This file is licensed GPL 2 as of June 1991.
