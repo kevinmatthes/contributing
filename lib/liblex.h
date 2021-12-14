@@ -53,7 +53,6 @@
  * Macros.
  */
 
-#define NEWLINE echo ("\n");
 #define YYLAST  yytext[yyleng - 0x1]
 
 
