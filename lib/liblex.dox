@@ -30,6 +30,32 @@
 
 /******************************************************************************/
 
+/*! \def    __LIBLEX_H__
+ *
+ * In order to prevent unintended side effects when including this header
+ * mulitple times, this define is utilised such that its header is included at
+ * most once.
+ *
+ *
+ *
+ * \brief   Ensure this header being included just once.
+ */
+
+/*! \def    YYLAST
+ *
+ * In many cases, the last character of the current lexeme is relevant for the
+ * further processing.  Since it, thus, needs to be called regularly, this
+ * preprocessor constant provides an abbreviation therefore.
+ *
+ *
+ *
+ * \brief   The last character of the current lexeme.
+ * \sa      yyleng
+ * \sa      yytext
+ */
+
+
+
 /*! \var    extern FILE * yyin;
  *
  * It is defined by the flex library but required in order to define the
@@ -55,7 +81,7 @@
  *
  *
  *
- * \brief       The recognised lexeme's length.
+ * \brief       The current lexeme's length.
  * \copydetails yyin
  * \sa          yytext
  */
