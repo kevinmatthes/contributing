@@ -55,27 +55,29 @@
  *
  *
  *
- * \brief   The recognised lexeme's length.
- * \sa      yyleng
+ * \brief       The recognised lexeme's length.
+ * \copydetails yyin
+ * \sa          yytext
  */
 
 /*! \var    extern FILE * yyout;
  *
- * \brief           The default output stream for lexers.
- * \copydetails     yyin
+ * \brief       The default output stream for lexers.
+ * \copydetails yyin
  */
 
 /*! \var    extern char * yytext;
  *
- * This string stores the lexeme recognised by the compiled lexer.
+ * This string stores the current lexeme recognised by the compiled lexer.
  *
  * When editing not only its characters but also altering its length, `yyleng`
  * needs to be adjusted appropriately, as well.
  *
  *
  *
- * \brief   The recognised lexeme.
- * \sa      yyleng
+ * \brief       The recognised lexeme.
+ * \copydetails yyin
+ * \sa          yyleng
  */
 
 /******************************************************************************/
