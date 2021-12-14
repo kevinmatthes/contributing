@@ -18,7 +18,14 @@
 
 /**
  * \file    crop_space.c
- * \brief   Remove trailing spaces and tabs from a lexeme.
+ * \brief   Remove trailing spaces and tabs from the current lexeme.
+ *
+ *
+ *
+ * This function will remove all trailing space and tab characters from the
+ * current lexeme.  Thereby, `yyleng` will be adjusted automatically.
+ *
+ *
  *
  * \author      Kevin Matthes
  * \copyright   (C) 2021 Kevin Matthes.

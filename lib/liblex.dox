@@ -72,6 +72,13 @@
  * \sa          yytext
  */
 
+/*! \fn     void crop_space (void)
+ *
+ * \brief       Remove trailing spaces and tabs from the current lexeme.
+ * \copydetails crop_space.c
+ * \sa          yyleng
+ */
+
 /*! \fn     void echo (const char * const string)
  *
  * \brief       Write a given string to `yyout`.
