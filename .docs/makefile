@@ -73,12 +73,14 @@ SOFTWARE		:= ./software_requirements.md
 #
 ##
 
-.PHONY: default software submodule tidy
+.PHONY: default pdf software submodule tidy
 
 default: $(PDF)
 
 $(DIRS):
 	$(NEWDIR) $@
+
+pdf: $(PDF)
 
 $(PDF): $(CONTRIBUTING) $(LICENSE) $(MARKDOWN) $(README) $(YAML)
 	$(LISTER)	$(YAML) $(NEWPAGE) $(README) $(NEWPAGE) $(SOFTWARE) $(NEWPAGE) \
