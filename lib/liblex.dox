@@ -64,6 +64,30 @@
 
 
 
+/*! \fn     main
+ *
+ * In order to enable the provided lexfiles to work as applications on their
+ * own, this function provides the required call of the main lexing function --
+ * `yylex`.  This main function will be linked automatically to the resulting
+ * C source files of the provided lexfiles.
+ *
+ * In case that a custom main function for a certain lexfile shall be used
+ * instead of this one, the symbolic constant `__LIBLEX_CUSTOM_MAIN__` needs to
+ * be defined before the header `liblex.h` is included.
+ *
+ * This main function does not care for any command line options and just calls
+ * `yylex`.  As soon as `yylex` returns, the main function will be left with
+ * `0x0`.
+ *
+ *
+ *
+ * \brief   A very simple main function.
+ * \sa      liblex.h
+ * \sa      yylex
+ */
+
+
+
 /*! \var    extern FILE * yyin;
  *
  * It is defined by the flex library but required in order to define the
