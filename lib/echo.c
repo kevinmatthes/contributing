@@ -18,7 +18,7 @@
 
 /**
  * \file    echo.c
- * \brief   Write a given string to yyout.
+ * \brief   Write a given string to `yyout`.
  *
  * \author      Kevin Matthes
  * \copyright   (C) 2021 Kevin Matthes.

@@ -18,7 +18,7 @@
 
 /**
  * \file    write_char.c
- * \brief   Write a single character of yytext to yyout.
+ * \brief   Write a single character of yytext to  `yyout`.
  *
  * \author      Kevin Matthes
  * \copyright   (C) 2021 Kevin Matthes.

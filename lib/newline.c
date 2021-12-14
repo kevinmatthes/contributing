@@ -18,7 +18,7 @@
 
 /**
  * \file    newline.c
- * \brief   Write a newline whitespace to yyout.
+ * \brief   Write a newline whitespace to `yyout`.
  *
  * \author      Kevin Matthes
  * \copyright   (C) 2021 Kevin Matthes.
