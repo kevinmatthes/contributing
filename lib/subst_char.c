@@ -23,7 +23,7 @@
  *
  *
  * This inline function will substitute characters in `yytext`.  All occurences
- * of the `old` character will be exchanged with the `new` character.
+ * of the `old` character will be exchanged with the `new` one.
  *
  *
  *

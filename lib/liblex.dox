@@ -105,6 +105,8 @@
  *
  * \brief       Substitute two characters in `yytext` with each other.
  * \copydetails subst_char.c
+ * \param       old The character to remove.
+ * \param       new The character to insert instead.
  * \sa          yytext
  */
 
