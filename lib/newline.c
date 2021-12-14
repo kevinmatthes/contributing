@@ -17,8 +17,8 @@
  */
 
 /**
- * \file    echo.c
- * \brief   Write a given string to yyout.
+ * \file    newline.c
+ * \brief   Write a newline whitespace to yyout.
  *
  * \author      Kevin Matthes
  * \copyright   (C) 2021 Kevin Matthes.
@@ -43,9 +43,9 @@
  * Functions.
  */
 
-inline void echo (const char * const string)
+inline void newline (void)
 {
-    fprintf (yyout, "%s", string);
+    fprintf (yyout, "\n");
     return;
 }
 

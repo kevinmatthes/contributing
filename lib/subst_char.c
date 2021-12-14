@@ -43,7 +43,7 @@
  * Functions.
  */
 
-inline void subst_char (const char old, const char new)
+void subst_char (const char old, const char new)
 {
     for (int i = 0x0; yytext[i]; i++)
         if (yytext[i] == old)

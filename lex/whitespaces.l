@@ -46,10 +46,10 @@ case2   {content}{space}
 {line}      ECHO;
 {eol}       NEWLINE;
 
-{case1}     crop_newline (); crop_space (); ECHO; NEWLINE;
-{case2}     crop_space (); ECHO; NEWLINE;
+{case1}     crop_newline (); crop_space (); ECHO; newline ();
+{case2}     crop_space (); ECHO; newline ();
 
-{content}   ECHO; NEWLINE;
+{content}   ECHO; newline ();
 
 %% /***************************************************************************/
 
