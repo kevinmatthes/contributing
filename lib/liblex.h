@@ -20,6 +20,19 @@
  * \file    liblex.h
  * \brief   The main header of `liblex'.
  *
+ *
+ *
+ * This library consists of multiple C files which all provide several symbols.
+ * In order to call them during the compilation process, this header declares
+ * them as existing such that just this file needs to be included.
+ *
+ * The provided functions are called frequently in the provided lexfiles such
+ * that their central definition by this library avoids, on the one hand,
+ * redundance and, on the other one, benefits the maintainability of the source
+ * code.
+ *
+ *
+ *
  * \author      Kevin Matthes
  * \copyright   (C) 2021 Kevin Matthes.
  *              This file is licensed GPL 2 as of June 1991.

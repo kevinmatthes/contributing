@@ -44,7 +44,7 @@
 /*! \def    YYLAST
  *
  * In many cases, the last character of the current lexeme is relevant for the
- * further processing.  Since it, thus, needs to be called regularly, this
+ * further processing.  Since it, thus, needs to be called frequently, this
  * preprocessor constant provides an abbreviation therefore.
  *
  *
