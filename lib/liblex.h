@@ -74,15 +74,17 @@
  * Function declarations.
  */
 
-// Utility functions.
 extern  void    crop_newline    (void);
 extern  void    crop_space      (void);
 extern  void    echo            (const char * const string);
-extern  int     main            (void);
 extern  void    newline         (void);
 extern  void    subst_char      (const char old, const char new);
 extern  void    write_char      (const int index);
 extern  int     yylex           (void);
+
+#ifndef __LIBLEX_CUSTOM_MAIN__
+extern  int     main            (void);
+#endif  // ! __LIBLEX_CUSTOM_MAIN__
 
 
 
