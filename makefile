@@ -40,11 +40,14 @@ COPY	:= cp
 
 # Make directories.
 MDOCS	:= -C ./.docs/
+MLIB	:= -C ./lib/
 MLEX	:= -C ./lex/
 
 # Concrete files.
 CONTRIBUTING	:= ./CONTRIBUTING.md
 LICENSE			:= ./LICENSE
+PDF				:= ./.docs/documentation.pdf
+REFMAN			:= ./.docs/latex/refman.pdf
 
 
 
@@ -54,9 +57,22 @@ LICENSE			:= ./LICENSE
 #
 ##
 
-.PHONY: default install lexers license pdf software submodule tidy uninstall
+.PHONY:	default \
+		doxygen \
+		install \
+		lexers \
+		library \
+		license \
+		manual \
+		pdf \
+		software \
+		submodule \
+		tidy \
+		uninstall
 
 default: submodule
+
+doxygen: $(REFMAN)
 
 install:
 	make $(MLEX) install
@@ -64,11 +80,23 @@ install:
 lexers:
 	make $(MLEX) lexers
 
+library:
+	make $(MLIB) library
+
 license: $(LICENSE)
 	$(COPY) $^ ../
 
-pdf:
-	make $(MDOCS) default
+manual: $(PDF) $(REFMAN)
+	$(COPY) $(PDF) ./contributing.pdf
+	$(COPY) $(REFMAN) ./liblex.pdf
+
+pdf: $(PDF)
+
+$(PDF):
+	make $(MDOCS) pdf
+
+$(REFMAN):
+	make $(MLIB) doxygen
 
 software:
 	make $(MDOCS) software
@@ -79,6 +107,7 @@ submodule: $(CONTRIBUTING)
 
 tidy:
 	make $(MDOCS) tidy
+	make $(MLIB) tidy
 	make $(MLEX) tidy
 
 uninstall:
