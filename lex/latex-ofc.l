@@ -77,12 +77,30 @@ ovr_tt  {override_on}"TT"{override_off}
 
 "%"[^\n]*{definition}{ofc}[^\n]*"\n"    ECHO;
 
-{def_bf}|{ovr_bf}   bf_override = true; ECHO;
-{def_it}|{ovr_it}   it_override = true; ECHO;
-{def_rm}|{ovr_rm}   rm_override = true; ECHO;
-{def_sf}|{ovr_sf}   sf_override = true; ECHO;
-{def_sl}|{ovr_sl}   sl_override = true; ECHO;
-{def_tt}|{ovr_tt}   tt_override = true; ECHO;
+{def_bf}|{ovr_bf}   {
+                        bf_override = true;
+                        ECHO;
+                    };
+{def_it}|{ovr_it}   {
+                        it_override = true;
+                        ECHO;
+                    };
+{def_rm}|{ovr_rm}   {
+                        rm_override = true;
+                        ECHO;
+                    };
+{def_sf}|{ovr_sf}   {
+                        sf_override = true;
+                        ECHO;
+                    };
+{def_sl}|{ovr_sl}   {
+                        sl_override = true;
+                        ECHO;
+                    };
+{def_tt}|{ovr_tt}   {
+                        tt_override = true;
+                        ECHO;
+                    };
 
 {occ_bf}    echo (bf_override ? "\\bf{" : "\\textbf{");
 {occ_it}    echo (it_override ? "\\it{" : "\\textit{");

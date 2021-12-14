@@ -41,8 +41,17 @@
 
 %% /***************************************************************************/
 
-[^\n]*"\n"  complain_length(); linecount++; RESET;
-[^\n]*      complain_length(); NEWLINE; complain_line (); RESET;
+[^\n]*"\n"  {
+                complain_length ();
+                linecount++;
+                RESET;
+            };
+[^\n]*      {
+                complain_length ();
+                NEWLINE;
+                complain_line ();
+                RESET;
+            };
 
 %% /***************************************************************************/
 

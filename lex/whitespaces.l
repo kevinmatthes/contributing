@@ -44,10 +44,22 @@ case2   {content}{space}
 {line}      ECHO;
 {eol}       newline ();
 
-{case1}     crop_newline (); crop_space (); ECHO; newline ();
-{case2}     crop_space (); ECHO; newline ();
+{case1}     {
+                crop_newline ();
+                crop_space ();
+                ECHO;
+                newline ();
+            };
+{case2}     {
+                crop_space ();
+                ECHO;
+                newline ();
+            };
 
-{content}   ECHO; newline ();
+{content}   {
+                ECHO;
+                newline ();
+            };
 
 %% /***************************************************************************/
 
