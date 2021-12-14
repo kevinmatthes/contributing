@@ -101,6 +101,13 @@
  * \sa          yyout
  */
 
+/*! \fn     void subst_char (const char old, const char new)
+ *
+ * \brief       Substitute two characters in `yytext` with each other.
+ * \copydetails subst_char.c
+ * \sa          yytext
+ */
+
 /*! \fn     void write_char (const int index)
  *
  * \brief       Write a single character of `yytext` to `yyout`.

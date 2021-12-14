@@ -18,7 +18,14 @@
 
 /**
  * \file    subst_char.c
- * \brief   Substitute two characters in yytext with each other.
+ * \brief   Substitute two characters in `yytext` with each other.
+ *
+ *
+ *
+ * This inline function will substitute characters in `yytext`.  All occurences
+ * of the `old` character will be exchanged with the `new` character.
+ *
+ *
  *
  * \author      Kevin Matthes
  * \copyright   (C) 2021 Kevin Matthes.
