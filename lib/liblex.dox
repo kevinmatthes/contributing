@@ -64,7 +64,7 @@
 
 
 
-/*! \fn     main
+/*! \fn     int main (void)
  *
  * In order to enable the provided lexfiles to work as applications on their
  * own, this function provides the required call of the main lexing function --
@@ -84,6 +84,13 @@
  * \brief   A very simple main function.
  * \sa      liblex.h
  * \sa      yylex
+ */
+
+/*! \fn     extern int yylex (void);
+ *
+ * \brief       The main lexing function, called by `main`.
+ * \copydetails yyin
+ * \sa          main
  */
 
 
