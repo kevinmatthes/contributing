@@ -28,7 +28,7 @@
  *
  * The provided functions are called frequently in the provided lexfiles such
  * that their central definition by this library avoids, on the one hand,
- * redundance and, on the other one, benefits the maintainability of the source
+ * redundancy and, on the other one, benefits the maintainability of the source
  * code.
  *
  *

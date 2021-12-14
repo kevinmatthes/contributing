@@ -20,6 +20,14 @@
  * \file    liblex.dox
  * \brief   The docstrings for Doxygen.
  *
+ *
+ *
+ * In order to avoid both redundant explanations of related symbols and to
+ * unnecessarily enlarge the source files, the corresponding documentation
+ * information for all symbols are provided centrally with this file.
+ *
+ *
+ *
  * \author      Kevin Matthes
  * \copyright   (C) 2021 Kevin Matthes.
  *              This file is licensed GPL 2 as of June 1991.
