@@ -28,7 +28,6 @@
 %{
     #include "liblex.h"
 
-    void    subst_char  (const char old, const char new);
     void    write_char  (const int index);
 %}
 
@@ -71,15 +70,6 @@ Mr?[rs]". "{text}       ECHO;
 .   ECHO;
 
 %% /***************************************************************************/
-
-void subst_char (const char old, const char new)
-{
-    for (unsigned long long int i = 0x0; yytext[i]; i++)
-        if (yytext[i] == old)
-            yytext[i] = new;
-
-    return;
-}
 
 inline void write_char (const int index)
 {
