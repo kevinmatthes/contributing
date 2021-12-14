@@ -30,4 +30,16 @@
 
 /******************************************************************************/
 
+/*! \var    yyin
+ *
+ * It is defined by the flex library but required in order to define the
+ * functions for the provided lexfiles properly.  Hence, it is provided as an
+ * `extern`al reference.
+ *
+ * The actual name of this stream depends on the options passed to `lex` during
+ * the compilation process.  In this case, the default prefix `yy` is kept.
+ *
+ * \brief   The default input stream for lexers.
+ */
+
 /******************************************************************************/
