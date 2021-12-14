@@ -103,7 +103,7 @@
 
 /*! \fn     void write_char (const int index)
  *
- * \brief       Write a single character of yytext to `yyout`.
+ * \brief       Write a single character of `yytext` to `yyout`.
  * \copydetails write_char.c
  * \param       index   The index of the character to be written to `yyout`.
  *                      Needs to be less than `yyleng`.
