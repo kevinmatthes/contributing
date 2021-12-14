@@ -62,9 +62,10 @@
  */
 
 // Utility functions.
-extern  void    echo    (const char * const string);
-extern  int     main    (void);
-extern  int     yylex   (void);
+extern  void    echo        (const char * const string);
+extern  int     main        (void);
+extern  void    subst_char  (const char old, const char new);
+extern  int     yylex       (void);
 
 
 

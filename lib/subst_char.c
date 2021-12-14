@@ -17,8 +17,8 @@
  */
 
 /**
- * \file    echo.c
- * \brief   Write a given string to yyout.
+ * \file    subst_char.c
+ * \brief   Substitute two characters in yytext.
  *
  * \author      Kevin Matthes
  * \copyright   (C) 2021 Kevin Matthes.
@@ -43,9 +43,12 @@
  * Functions.
  */
 
-inline void echo (const char * const string)
+inline void subst_char (const char old, const char new)
 {
-    fprintf (yyout, "%s", string);
+    for (int i = 0x0; yytext[i]; i++)
+        if (yytext[i] == old)
+            yytext[i] = new;
+
     return;
 }
 
