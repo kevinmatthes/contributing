@@ -66,8 +66,9 @@
 
 /*! \fn     void crop_newline (void)
  *
- * \brief       Remove one trailing newline whitespace from a lexeme.
+ * \brief       Remove one trailing newline whitespace from the current lexeme.
  * \copydetails crop_newline.c
+ * \sa          yyleng
  * \sa          yytext
  */
 
