@@ -17,8 +17,8 @@
  */
 
 /**
- * \file    echo.c
- * \brief   Write a given string to yyout.
+ * \file    crop_newline.c
+ * \brief   Remove one trailing newline whitespace from a lexeme.
  *
  * \author      Kevin Matthes
  * \copyright   (C) 2021 Kevin Matthes.
@@ -43,9 +43,14 @@
  * Functions.
  */
 
-inline void echo (const char * const string)
+inline void crop_newline (void)
 {
-    fprintf (yyout, "%s", string);
+    if (YYLAST == '\n')
+    {
+        YYLAST = 0x0;
+        yyleng--;
+    };
+
     return;
 }
 

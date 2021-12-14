@@ -28,7 +28,6 @@
 %{
     #include "liblex.h"
 
-    void    crop_newline    (void);
     void    crop_space      (void);
 %}
 
@@ -53,13 +52,6 @@ case2   {content}{space}
 {content}   ECHO; NEWLINE;
 
 %% /***************************************************************************/
-
-inline void crop_newline (void)
-{
-    YYLAST = 0x0;
-    yyleng--;
-    return;
-}
 
 void crop_space (void)
 {
