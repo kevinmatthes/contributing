@@ -20,6 +20,13 @@
  * \file    echo.c
  * \brief   Write a given string to `yyout`.
  *
+ *
+ *
+ * This inline function will write a given string to `yyout` as often required
+ * by several lexfiles.
+ *
+ *
+ *
  * \author      Kevin Matthes
  * \copyright   (C) 2021 Kevin Matthes.
  *              This file is licensed GPL 2 as of June 1991.

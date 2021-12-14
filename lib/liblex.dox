@@ -64,6 +64,13 @@
 
 
 
+/*! \fn     void echo (const char * const string)
+ *
+ * \brief       Write a given string to `yyout`.
+ * \copydetails echo.c
+ * \sa          yyout
+ */
+
 /*! \fn     int main (void)
  *
  * In order to enable the provided lexfiles to work as applications on their
