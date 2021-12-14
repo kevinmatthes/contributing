@@ -29,8 +29,12 @@
     #include "liblex.h"
 
     #define MAX_LENGTH      YYLAST == '\n' ? 0x51 : 0x50
-    #define NEWLINE         if (complained) echo ("\n");
     #define RESET           complained = false;
+
+    #ifdef  NEWLINE
+    #undef  NEWLINE
+    #endif
+    #define NEWLINE         if (complained) echo ("\n");
 
     void    complain_length (void);
     void    complain_line   (void);

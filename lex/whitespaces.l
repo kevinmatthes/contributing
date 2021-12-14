@@ -28,11 +28,8 @@
 %{
     #include "liblex.h"
 
-    #define NEWLINE echo ("\n")
-
     void    crop_newline    (void);
     void    crop_space      (void);
-    void    echo            (const char * const string);
 %}
 
 space   [ \t]+
