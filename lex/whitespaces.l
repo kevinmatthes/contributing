@@ -27,8 +27,6 @@
 
 %{
     #include "liblex.h"
-
-    void    crop_space      (void);
 %}
 
 space   [ \t]+
@@ -52,13 +50,5 @@ case2   {content}{space}
 {content}   ECHO; newline ();
 
 %% /***************************************************************************/
-
-void crop_space (void)
-{
-    for (; YYLAST == ' ' || YYLAST == '\t'; yyleng--)
-        YYLAST = 0x0;
-
-    return;
-}
 
 /******************************************************************************/

@@ -17,8 +17,8 @@
  */
 
 /**
- * \file    crop_newline.c
- * \brief   Remove one trailing newline whitespace from a lexeme.
+ * \file    crop_space.c
+ * \brief   Remove trailing spaces and tabs from a lexeme.
  *
  * \author      Kevin Matthes
  * \copyright   (C) 2021 Kevin Matthes.
@@ -43,13 +43,10 @@
  * Functions.
  */
 
-inline void crop_newline (void)
+void crop_space (void)
 {
-    if (YYLAST == '\n')
-    {
+    for (; YYLAST == ' ' || YYLAST == '\t'; yyleng--)
         YYLAST = 0x0;
-        yyleng--;
-    };
 
     return;
 }

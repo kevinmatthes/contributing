@@ -63,6 +63,7 @@
 
 // Utility functions.
 extern  void    crop_newline    (void);
+extern  void    crop_space      (void);
 extern  void    echo            (const char * const string);
 extern  int     main            (void);
 extern  void    newline         (void);
