@@ -18,7 +18,14 @@
 
 /**
  * \file    write_char.c
- * \brief   Write a single character of yytext to  `yyout`.
+ * \brief   Write a single character of `yytext` to `yyout`.
+ *
+ *
+ *
+ * This inline function will write a certain character of the current lexeme
+ * to `yyout` as it is frequently required by many lexfiles.
+ *
+ *
  *
  * \author      Kevin Matthes
  * \copyright   (C) 2021 Kevin Matthes.

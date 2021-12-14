@@ -68,6 +68,7 @@
  *
  * \brief       Write a given string to `yyout`.
  * \copydetails echo.c
+ * \param       string  The string to be written to `yyout`.
  * \sa          yyout
  */
 
@@ -98,6 +99,17 @@
  * \brief       Write a newline whitespace to `yyout`.
  * \copydetails newline.c
  * \sa          yyout
+ */
+
+/*! \fn     void write_char (const int index)
+ *
+ * \brief       Write a single character of yytext to `yyout`.
+ * \copydetails write_char.c
+ * \param       index   The index of the character to be written to `yyout`.
+ *                      Needs to be less than `yyleng`.
+ * \sa          yyleng
+ * \sa          yyout
+ * \sa          yytext
  */
 
 /*! \fn     extern int yylex (void);
