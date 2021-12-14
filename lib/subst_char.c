@@ -18,7 +18,7 @@
 
 /**
  * \file    subst_char.c
- * \brief   Substitute two characters in yytext.
+ * \brief   Substitute two characters in yytext with each other.
  *
  * \author      Kevin Matthes
  * \copyright   (C) 2021 Kevin Matthes.
