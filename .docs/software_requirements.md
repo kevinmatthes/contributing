@@ -38,6 +38,15 @@ adjust the corresponding variable accordingly.
 
 
 
+## `ar` (`ARCHIVE`)
+
+The default UNIX utility for library creation is used in order to create the
+intended library.
+
+It should rather not be altered.
+
+
+
 ## `cat` (`LISTER`)
 
 The default UNIX utility in order to write a file's content to `stdout` is used
@@ -54,6 +63,16 @@ The default UNIX utility for copying files around is required for copying the
 project's main (utility) files into the super project when bound as a submodule.
 
 It can be altered as desired.
+
+
+
+## `doxygen` (`DOXYGEN`)
+
+This application is required in order to provide an automatically generated
+documentation of this repository's source code.
+
+Altering this application could be difficult since the compilation routine of
+the source code documentation is designed for `doxygen`.
 
 
 
