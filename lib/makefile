@@ -52,8 +52,9 @@ LFLAGS	:= -lfl
 MDOX	:= -C ../.docs/latex/
 
 # Directories.
-LEXDIR	:= ../lex/
-DIRS	:= $(LEXDIR)
+LEXDIR		:= ../lex/
+SUBMODDIR	:= ../../lib/
+DIRS		:= $(LEXDIR) $(SUBMODDIR)
 
 # Library compilation requirements.
 HEADERS	:= $(wildcard ./*.h)
@@ -73,7 +74,7 @@ SELF		:= ./makefile
 #
 ##
 
-.PHONY: default doxygen library tidy
+.PHONY: default doxygen lexmodule library submodule tidy
 
 default: library
 
@@ -92,8 +93,12 @@ $(LIBRARY): $(OBJECTS)
 $(OBJECTS): $(SOURCE)
 	$(CC) $(CFLAGS) -c $(LFLAGS) $^
 
-submodule: $(DIRS) $(HEADERS) $(LIBRARY)
+lexmodule: $(HEADERS) $(LEXDIR) $(LIBRARY)
 	$(COPY) $(HEADERS) $(LIBRARY) $(LEXDIR)
+	make tidy
+
+submodule: $(HEADERS) $(LIBRARY) $(SUBMODDIR)
+	$(COPY) $(HEADERS) $(LIBRARY) $(SUBMODDIR)
 	make tidy
 
 tidy: $(LIBRARY) $(OBJECTS)
