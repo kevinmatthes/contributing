@@ -30,16 +30,52 @@
 
 /******************************************************************************/
 
-/*! \var    yyin
+/*! \var    extern FILE * yyin;
  *
  * It is defined by the flex library but required in order to define the
  * functions for the provided lexfiles properly.  Hence, it is provided as an
- * `extern`al reference.
+ * `extern`al reference to its actual definition.
  *
  * The actual name of this stream depends on the options passed to `lex` during
  * the compilation process.  In this case, the default prefix `yy` is kept.
  *
+ *
+ *
  * \brief   The default input stream for lexers.
+ */
+
+/*! \var    extern int yyleng;
+ *
+ * This variable stores the length of the currently considered lexeme.
+ *
+ * In case `yytext` should be edited such that it carries more or less
+ * characters than before, now, the corresponding change should also affect
+ * `yyleng` accordingly in order to avoid unintended side effects during the
+ * text processing.
+ *
+ *
+ *
+ * \brief   The recognised lexeme's length.
+ * \sa      yyleng
+ */
+
+/*! \var    extern FILE * yyout;
+ *
+ * \brief           The default output stream for lexers.
+ * \copydetails     yyin
+ */
+
+/*! \var    extern char * yytext;
+ *
+ * This string stores the lexeme recognised by the compiled lexer.
+ *
+ * When editing not only its characters but also altering its length, `yyleng`
+ * needs to be adjusted appropriately, as well.
+ *
+ *
+ *
+ * \brief   The recognised lexeme.
+ * \sa      yyleng
  */
 
 /******************************************************************************/
