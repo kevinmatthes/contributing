@@ -20,6 +20,13 @@
  * \file    newline.c
  * \brief   Write a newline whitespace to `yyout`.
  *
+ *
+ *
+ * This inline function will write a newline whitespace to `yyout` as it is
+ * frequently required by many lexfiles.
+ *
+ *
+ *
  * \author      Kevin Matthes
  * \copyright   (C) 2021 Kevin Matthes.
  *              This file is licensed GPL 2 as of June 1991.

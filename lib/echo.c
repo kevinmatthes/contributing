@@ -22,8 +22,8 @@
  *
  *
  *
- * This inline function will write a given string to `yyout` as often required
- * by several lexfiles.
+ * This inline function will write a given string to `yyout` as it is frequently
+ * required by many lexfiles.
  *
  *
  *

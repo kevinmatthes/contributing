@@ -93,6 +93,13 @@
  * \sa      yylex
  */
 
+/*! \fn     void newline (void)
+ *
+ * \brief       Write a newline whitespace to `yyout`.
+ * \copydetails newline.c
+ * \sa          yyout
+ */
+
 /*! \fn     extern int yylex (void);
  *
  * \brief       The main lexing function, called by `main`.
