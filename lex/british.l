@@ -27,8 +27,6 @@
 
 %{
     #include "liblex.h"
-
-    void    write_char  (const int index);
 %}
 
 punctuation "."|"?"|"!"|":"
@@ -70,13 +68,5 @@ Mr?[rs]". "{text}       ECHO;
 .   ECHO;
 
 %% /***************************************************************************/
-
-inline void write_char (const int index)
-{
-    if (index < yyleng)
-        fprintf (yyout, "%c", yytext[index]);
-
-    return;
-}
 
 /******************************************************************************/

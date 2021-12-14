@@ -17,8 +17,8 @@
  */
 
 /**
- * \file    subst_char.c
- * \brief   Substitute two characters in yytext with each other.
+ * \file    write_char.c
+ * \brief   Write a single character of yytext to yyout.
  *
  * \author      Kevin Matthes
  * \copyright   (C) 2021 Kevin Matthes.
@@ -43,11 +43,10 @@
  * Functions.
  */
 
-inline void subst_char (const char old, const char new)
+inline void write_char (const int index)
 {
-    for (int i = 0x0; yytext[i]; i++)
-        if (yytext[i] == old)
-            yytext[i] = new;
+    if (index < yyleng)
+        fprintf (yyout, "%c", yytext[index]);
 
     return;
 }
