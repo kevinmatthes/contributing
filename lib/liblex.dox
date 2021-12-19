@@ -147,7 +147,7 @@
 
 /*! \var    extern FILE * yyin;
  *
- * It is defined by the flex library but required in order to define the
+ * It is defined by the `flex` library but required in order to define the
  * functions for the provided lexfiles properly.  Hence, it is provided as an
  * `extern`al reference to its actual definition.
  *
