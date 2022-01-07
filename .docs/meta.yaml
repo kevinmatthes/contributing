@@ -1,14 +1,5 @@
 ---
-##
-#
-# meta.yaml : my default meta data for `pandoc'.
-#
-# See `LICENSE' for full license.
-# See `README.md' for project details.
-#
-##
-
-##
+################################################################################
 #
 # Copyright (C) 2021─2022 Kevin Matthes
 #
@@ -27,13 +18,33 @@
 # 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #
 ##
-
+#
+#   FILE
+#     meta.yaml
+#
+#   BRIEF
+#     My default meta data for `pandoc'.
+#
+#   AUTHOR
+#     Kevin Matthes
+#
+#   COPYRIGHT
+#     (C) 2021─2022 Kevin Matthes.
+#     This file is licensed GPL 2 as of June 1991.
+#
+#   DATE
+#     2021─2022
+#
+#   NOTE
+#     See `LICENSE' for full license.
+#     See `README.md' for project details.
+#
 ################################################################################
 
 # Basic settings.
-lang:           en-GB
 date:           \today
 documentclass:  scrartcl
+lang:           en-GB
 toc:            true
 
 
