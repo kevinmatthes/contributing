@@ -10,7 +10,7 @@
 
 ##
 #
-# Copyright (C) 2021 Kevin Matthes
+# Copyright (C) 2021─2022 Kevin Matthes
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -30,14 +30,17 @@
 
 ################################################################################
 
+# Basic settings.
+lang:           en-GB
+date:           \today
+documentclass:  scrartcl
+toc:            true
+
+
+
+# Settings with multiple entries.
 author:
   - Kevin Matthes
-
-date:
-  - \today
-
-documentclass:
-  - scrartcl
 
 geometry:
   - bottom  = 3 cm
@@ -45,11 +48,5 @@ geometry:
   - outer   = 3 cm
   - top     = 3 cm
   - twoside = true
-
-lang:
-  - en-GB
-
-toc:
-  - true
 
 ---
