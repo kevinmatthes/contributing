@@ -1,6 +1,6 @@
 <!------------------------------------------------------------------------------
 --
--- Copyright (C) 2021 Kevin Matthes
+-- Copyright (C) 2021─2022 Kevin Matthes
 --
 -- This program is free software; you can redistribute it and/or modify
 -- it under the terms of the GNU General Public License as published by
@@ -28,7 +28,7 @@
 --      Kevin Matthes
 --
 --  COPYRIGHT
---      (C) 2021─2022 Kevin Matthes
+--      (C) 2021─2022 Kevin Matthes.
 --      This file is licensed GPL 2 as of June 1991.
 --
 --  DATE
